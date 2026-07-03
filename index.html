@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
-<title>VDVIA AI 네이티브 운영 매뉴얼 v4.3</title>
+<title>VDVIA AI 네이티브 운영 매뉴얼 v4.4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
     <span class="eyebrow">VDVIA × ZISHEL GROUP × AI</span>
     <h1 class="fr">AI 네이티브 운영 매뉴얼</h1>
     <div class="lede">3인 + AI로 운영하는 회사의 일하는 방식. 구성원의 머릿속 = vdvia 폴더 = GitHub를 동일하게 유지하고, 암묵지를 매일 자산으로 바꿔, 대부분의 업무가 자동화되는 조직 체계를 정의합니다.</div>
-    <div class="meta"><span><b>대상</b> 내부 운영 기준</span><span><b>작성</b> 제품성장팀</span><span><b>버전</b> v4.3 · 2026-07-02 (자동화 로드맵 섹션 삭제 · §0~§10 총 11섹션)</span></div>
+    <div class="meta"><span><b>대상</b> 내부 운영 기준</span><span><b>작성</b> 제품성장팀</span><span><b>버전</b> v4.4 · 2026-07-03 (§11 모델·토큰 가드 신설 · §0~§11 총 12섹션)</span></div>
   </div>
 
   <div class="body">
@@ -346,10 +346,41 @@
       <div class="callout"><b>한 줄 규칙 — 회사 문서 일은 @Claude · 맥북 일은 길면 폰(②), 짧으면 쪽지(③).</b><br>새 구성원은 ①만 알면 시작: Slack → Apps → Claude → Connect → 조직 선택에서 <b>반드시 "VDVIA"</b> (1회, 2분). ②·③은 해당 맥북이 켜져 있어야 합니다. 공식 @Claude는 <b>사람용 대화 입구</b>, 내부 봇은 <b>자동화의 발송 통로</b> — 역할이 달라 둘 다 유지합니다.</div>
     </section>
 
+    <!-- 11 -->
+    <section>
+      <div class="sec-h"><div class="sec-n">11</div><div><h2>모델·토큰 가드 — 공유 한도 안에서 일하기</h2><div class="sec-sub">신설 · Team Plan 5시간 사용량 한도는 전 구성원이 공유</div></div></div>
+      <p>Team Plan 사용량 한도는 3인이 함께 씁니다. <strong>큰 작업 하나가 5시간 한도의 수십%를 태울 수 있어</strong>, 모델 선택과 작업 규모 판단을 의식적으로 합니다.</p>
+      <table>
+        <tr><th style="width:130px">모델</th><th>쓸 때</th></tr>
+        <tr><td><b>Haiku</b></td><td>단순 분류·요약·태깅·반복 후처리 (자동화 끝단). 토큰 가장 적음.</td></tr>
+        <tr><td><b>Sonnet</b></td><td>일반 작업·운영·코드 작성·분류·문서. <b>95% 작업의 sweet spot.</b></td></tr>
+        <tr><td><b>Opus</b></td><td>전략 사고·복잡 디버깅·창작·신청서 작성·아키텍처 결정. 진짜 필요할 때만.</td></tr>
+        <tr><td><b>Fable 5</b></td><td>Mythos급 최상위, 한도 소모 최대. 최고난도 전략·아키텍처·복잡 창작만 — <span class="hl">실행형 대규모 작업엔 쓰지 않고 Sonnet 전환 후 진행</span>.</td></tr>
+      </table>
+      <p style="margin-top:10px;font-size:14px;color:var(--sub)">자동화 스크립트는 <code>claude -p ... --model {haiku|sonnet|opus}</code> 또는 환경변수 <code>CLAUDE_MODEL</code>로 명시. 인터랙티브는 사람이 <code>/model</code>로 즉석 전환.</p>
+
+      <div class="clause" style="margin-top:20px">
+        <div class="ct"><span class="no">가드</span>대규모 작업 사전 스코핑</div>
+        <p>아래 중 하나라도 해당하면 실행 전 <b>AskUserQuestion으로 스코핑</b>한다 (해당 없으면 바로 진행):</p>
+        <ul class="clean">
+          <li>읽거나 수정할 파일 <b>~15개 이상</b></li>
+          <li><b>서브에이전트·워크플로 fan-out</b> 필요</li>
+          <li>브라우저 왕복 <b>10회 이상</b> 예상 / 대량 데이터 전수 처리</li>
+        </ul>
+      </div>
+      <table class="dense" style="margin-top:14px">
+        <tr><th style="width:110px">옵션</th><th>내용</th><th style="width:210px">권장 모델</th></tr>
+        <tr><td><b>라이트</b></td><td>핵심 파일만, 검증 생략, 서브에이전트 없음</td><td>Sonnet</td></tr>
+        <tr><td><b>기본</b></td><td>통상 진행, 서브에이전트 최소</td><td>Sonnet (판단 지점만 상위 모델)</td></tr>
+        <tr><td><b>헤비</b></td><td>fan-out + 적대 검증 포함</td><td>상위 모델 필요 시에만</td></tr>
+      </table>
+      <div class="callout" style="margin-top:16px"><b>모델 자동 제안 규칙</b> — 메인 세션 모델은 Claude가 직접 못 바꿉니다(<code>/model</code>은 사람 몫). 작업이 실행·반복형인데 세션이 Fable/Opus면 스코핑 시 <code>/model sonnet</code> 전환을 함께 제안합니다. 서브에이전트는 <b>기본 sonnet으로 스폰</b> — 모델 미지정은 세션 모델을 그대로 상속하므로, Fable 세션에서 서브에이전트를 그냥 fan-out하면 안 됩니다. 기계적 수집·후처리는 haiku, 전략 판단이 필요한 에이전트만 상위 모델. 자동화 스크립트는 위 표대로 <code>--model</code> 명시.<br><br><b>모니터링</b> — 큰 작업 전 <code>/usage</code>로 5시간 윈도 소진율 확인 권장 (사람이 실행).</div>
+    </section>
+
   </div>
 
   <div class="footer">
-    <b>버전 이력</b> — v2 2026-06-10 (구축 현황 반영) · v3 2026-07-01 (60_agency·7팀 반영) · v4 2026-07-02 (구조 유지 시스템 §5 · 암묵지 파이프라인 §7 · 자동화 인벤토리·로드맵 §8-9 신설 / 야간 배치 분산 구조·보고 채널·회의 앞단 08:00 사실 정정 / 브랜드 3색 정합 — 그린·올리브 제거 / "구축 현황" 섹션 폐지: 상태는 §8 인벤토리와 §9 로드맵이 정본) · v4.1 2026-07-02 (§4 라우팅에 실전 예시 추가 · §6 SSOT 맵 10→8행 간소화(§2 중복 제거·구조안내 정본 단일화) · §7 암묵지 분류에 신호·재사용 루프 추가 · §8에서 미가동 자동화 3건 삭제(serum-27 쿠폰봇·IG DM 체크·AI 스터디 — 실제 가동만 남김) · §9 로드맵 카드형 시각화 · §4/§10 60_agency를 John(리딩)+이솔(서포트)로 전환) · v4.2 2026-07-02 (Zishel 디자이너 스터디 매주 화 11:00로 정정 · §6 SSOT 맵 8→5행 대분류(회사 문서 전반으로 통합, 태스크 정본은 GitHub+Notion으로 확정) · §7·§8 어려운 콜아웃 평이화(스펙이 곧 코드 표현·등록 규약 4조 재작성) · §9 로드맵을 이사·CCTV·로봇청소기 비유로 재구성, 세부 체크리스트는 automation-backlog.md로 이전) · <b>v4.3 2026-07-02</b> (§9 자동화 로드맵 섹션 전체 삭제 — 세부 항목은 이미 automation-backlog.md·50_operations/README.md가 정본이라 중복이었음. 이후 §10 조직구조·§11 모바일 입구가 §9·§10으로 당겨짐, §8 shopee 행의 §9 참조도 갱신)<br>
+    <b>버전 이력</b> — v2 2026-06-10 (구축 현황 반영) · v3 2026-07-01 (60_agency·7팀 반영) · v4 2026-07-02 (구조 유지 시스템 §5 · 암묵지 파이프라인 §7 · 자동화 인벤토리·로드맵 §8-9 신설 / 야간 배치 분산 구조·보고 채널·회의 앞단 08:00 사실 정정 / 브랜드 3색 정합 — 그린·올리브 제거 / "구축 현황" 섹션 폐지: 상태는 §8 인벤토리와 §9 로드맵이 정본) · v4.1 2026-07-02 (§4 라우팅에 실전 예시 추가 · §6 SSOT 맵 10→8행 간소화(§2 중복 제거·구조안내 정본 단일화) · §7 암묵지 분류에 신호·재사용 루프 추가 · §8에서 미가동 자동화 3건 삭제(serum-27 쿠폰봇·IG DM 체크·AI 스터디 — 실제 가동만 남김) · §9 로드맵 카드형 시각화 · §4/§10 60_agency를 John(리딩)+이솔(서포트)로 전환) · v4.2 2026-07-02 (Zishel 디자이너 스터디 매주 화 11:00로 정정 · §6 SSOT 맵 8→5행 대분류(회사 문서 전반으로 통합, 태스크 정본은 GitHub+Notion으로 확정) · §7·§8 어려운 콜아웃 평이화(스펙이 곧 코드 표현·등록 규약 4조 재작성) · §9 로드맵을 이사·CCTV·로봇청소기 비유로 재구성, 세부 체크리스트는 automation-backlog.md로 이전) · v4.3 2026-07-02 (§9 자동화 로드맵 섹션 전체 삭제 — 세부 항목은 이미 automation-backlog.md·50_operations/README.md가 정본이라 중복이었음. 이후 §10 조직구조·§11 모바일 입구가 §9·§10으로 당겨짐, §8 shopee 행의 §9 참조도 갱신) · <b>v4.4 2026-07-03</b> (§11 "모델·토큰 가드" 신설 — 루트 CLAUDE.md에 전날 적용된 모델 선택 가이드 Fable 행 + 대규모 작업 사전 스코핑 규칙을 매뉴얼에도 반영. 기존 섹션 번호·크로스레퍼런스 보존 위해 맨 뒤 §11로 추가, 재배치 없음)<br>
     정본: <b>00_compass/vdvia-operating-manual.html</b> · 게시(noindex, 링크 공유 전용): <b>https://vdvia.github.io/vdvia-manual/</b> · VDVIA · a ZISHEL company · LEMONDERMA
   </div>
 </div>
