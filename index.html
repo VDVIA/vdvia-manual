@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
-<title>VDVIA AI 네이티브 운영 매뉴얼 v4.5</title>
+<title>VDVIA AI 네이티브 운영 매뉴얼 v4.6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -95,6 +95,15 @@
   .closing h3{font-size:21px;font-weight:700;margin:8px 0 6px;}
   .closing p{color:#e9e5d2;font-size:15px;line-height:1.7;}
 
+  /* toc */
+  .toc{padding:24px 76px 26px;border-bottom:1px solid var(--line);background:#fcfaf1;display:flex;flex-direction:column;gap:9px;}
+  .toc-t{font-size:11.5px;font-weight:800;letter-spacing:.18em;color:var(--mut);}
+  .toc-g{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .toc-l{font-size:11.5px;font-weight:700;color:var(--lemon);background:var(--ink);border-radius:4px;padding:2px 9px;flex:none;}
+  .toc a{font-size:14px;color:var(--ink);text-decoration:none;font-weight:600;border-bottom:2px solid var(--lemon);padding-bottom:1px;white-space:nowrap;}
+  .toc a:hover{background:var(--lemon-tint);}
+  section{scroll-margin-top:12px;}
+
   .footer{padding:34px 76px 0;color:var(--mut);font-size:12.5px;line-height:1.9;}
   .footer b{color:var(--sub);}
 </style>
@@ -107,27 +116,38 @@
     <span class="eyebrow">VDVIA × ZISHEL GROUP × AI</span>
     <h1 class="fr">AI 네이티브 운영 매뉴얼</h1>
     <div class="lede">3인 + AI로 운영하는 회사의 일하는 방식. 구성원의 머릿속 = vdvia 폴더 = GitHub를 동일하게 유지하고, 암묵지를 매일 자산으로 바꿔, 대부분의 업무가 자동화되는 조직 체계를 정의합니다.</div>
-    <div class="meta"><span><b>대상</b> 내부 운영 기준</span><span><b>작성</b> 제품성장팀</span><span><b>버전</b> v4.5 · 2026-07-03 (봇 보고 창구 통합 준비 — §8 사람 개입 열·검사 도구·프롬프트 재산 목록)</span></div>
+    <div class="meta"><span><b>대상</b> 내부 운영 기준</span><span><b>작성</b> 제품성장팀</span><span><b>버전</b> v4.6 · 2026-07-03 (UX 정비 — 목차 신설·문구 평이화)</span></div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-t">목차</div>
+    <div class="toc-g"><span class="toc-l">철학</span><a href="#s0">0 비전</a><a href="#s1">1 95% 효율 우선</a><a href="#s2">2 운영의 4축</a></div>
+    <div class="toc-g"><span class="toc-l">하루</span><a href="#s3">3 운영 사이클</a></div>
+    <div class="toc-g"><span class="toc-l">지식</span><a href="#s4">4 폴더 = 조직도</a><a href="#s5">5 지도 = 실물</a><a href="#s6">6 정본(SSOT) 맵</a><a href="#s7">7 암묵지 파이프라인</a></div>
+    <div class="toc-g"><span class="toc-l">자동화</span><a href="#s8">8 인벤토리 · 규약 · 다음 단계</a></div>
+    <div class="toc-g"><span class="toc-l">조직</span><a href="#s9">9 VDVIA × Zishel × AI</a></div>
+    <div class="toc-g"><span class="toc-l">사용법</span><a href="#s10">10 휴대폰 입구 3개</a><a href="#s11">11 모델·토큰 가드</a></div>
   </div>
 
   <div class="body">
 
     <!-- 0 -->
-    <section>
+    <section id="s0">
       <div class="sec-h"><div class="sec-n">0</div><div><h2>비전 — 무엇을, 왜</h2><div class="sec-sub">Vision &amp; Rationale · 불변</div></div></div>
       <p>AI 네이티브 조직은 더 이상 미래의 개념이 아닙니다. <strong>회사의 모든 맥락을 AI가 읽을 수 있게 축적하고, 매일 자가 개선하며, 필요한 도구를 직접 만들어 쓰는</strong> 조직이 등장하고 있습니다. VDVIA는 이 방식을 실제로 구축합니다.</p>
       <p>핵심은 <strong>암묵지(暗默知)</strong>의 자산화입니다. 개인의 머릿속·경험에만 존재하는 판단과 노하우를 AI와 함께 기록하여 <span class="hl">검색·재사용 가능한 회사의 자산</span>으로 전환합니다. 이 복리가 쌓일수록 생산성은 AI를 활용하지 않는 조직을 압도하게 됩니다.</p>
     </section>
 
     <!-- 1 -->
-    <section>
+    <section id="s1">
       <div class="sec-h"><div class="sec-n">1</div><div><h2>운영 철학 — 95% 효율 우선</h2><div class="sec-sub">Operating Principle · 불변</div></div></div>
       <p><strong>100%의 정확성보다 95%의 효율을 우선합니다.</strong> AI에 최대한의 실행 권한을 부여하여 빠르고 많은 일을 처리합니다. 회의록·야간 배치 등 자동 산출물은 별도의 사전 승인 없이 GitHub·Notion에 즉시 반영하고, 처리 내역을 <strong>Slack에 요약 보고</strong>합니다.</p>
       <div class="callout">AI와 구성원의 판단이 동기화되고 데이터가 축적될수록 정확도는 자연히 100%에 수렴합니다. 오류는 Git 이력으로 즉시 복구할 수 있으므로, <b>멈춰서 승인받는 비용이 사후 수정 비용보다 큽니다.</b> 단 하나의 예외 — <b>저장 위치가 확실치 않을 때는 추측하지 않습니다</b>(§5·§7의 _inbox 원칙).</div>
     </section>
 
     <!-- 2 -->
-    <section>
+    <section id="s2">
       <div class="sec-h"><div class="sec-n">2</div><div><h2>운영의 4축</h2><div class="sec-sub">Four Pillars · 불변</div></div></div>
       <table>
         <tr><th style="width:170px">축</th><th>내용</th><th style="width:140px">핵심 가치</th></tr>
@@ -139,7 +159,7 @@
     </section>
 
     <!-- 3 -->
-    <section>
+    <section id="s3">
       <div class="sec-h"><div class="sec-n">3</div><div><h2>운영 사이클 — 4축이 맞물려 도는 하루</h2><div class="sec-sub">How It Operates Daily · 회의 리듬 통합</div></div></div>
       <div class="cycle">
         <div class="phase">
@@ -163,7 +183,7 @@
         </div>
         <div class="cyc-arrow">▼</div>
         <div class="phase">
-          <div class="phase-time">밤 · 야간 분산 배치</div><span class="tagx">④ 복리</span>
+          <div class="phase-time">밤 ~ 다음날 오전 · 야간 분산 배치</div><span class="tagx">④ 복리</span>
           <div class="flow"><b>3인 각자 맥의 러너</b>가 자기 세션 + Slack + Notion의 당일 변경분을 증류 — <b>John 00:00 → Sol 01:00</b>(push 충돌 회피 시차) <b>→ Marco 11:00</b>. 암묵지·결정·액션을 추출해 GitHub·Notion 반영 → <b>#vdvia-암묵지-리포트</b>에 보고. 꺼져 있던 맥은 부팅 직후 1회 자동 catch-up</div>
         </div>
         <div class="cyc-arrow">▼</div>
@@ -172,11 +192,11 @@
           <div class="flow">폴더 트리에 맥락이 축적된 상태로 시작 → 세션이 더 빠르고 정확하게 작동 → <b>매일 복리로 누적</b></div>
         </div>
       </div>
-      <div class="cyc-foot"><b>모든 시각의 정본은 각 launchd plist</b> — 이 문서의 시각은 참조입니다. 회의 리듬: 월 09:30 주간회의 30분 · 화~금 09:30 스탠드업 15분 · 매월 첫 월 Monthly 리뷰 60분 · 매주 화 11:00 Zishel 디자이너 작업 공유.</div>
+      <div class="cyc-foot"><b>정확한 실행 시각은 각 자동화의 스케줄 설정(launchd)이 기준</b> — 여기 적힌 시각은 참고용입니다. 회의 리듬: 월 09:30 주간회의 30분 · 화~금 09:30 스탠드업 15분 · 매월 첫 월 Monthly 리뷰 60분 · 매주 화 11:00 Zishel 디자이너 작업 공유.</div>
     </section>
 
     <!-- 4 -->
-    <section>
+    <section id="s4">
       <div class="sec-h"><div class="sec-n">4</div><div><h2>지식 구조 — 폴더 트리 = 조직도 = 머릿속</h2><div class="sec-sub">Repository = Org Chart</div></div></div>
       <p>조직(<b>5팀 + 외주 대행 사업부 + 전사 공통</b>)을 폴더 구조와 일치시킵니다. 각 폴더의 <b>CLAUDE.md</b>가 그 팀의 목적·정본 위치·라우팅 규칙을 안내하는 색인입니다.</p>
       <div class="tree"><span class="root">vdvia/</span>
@@ -203,8 +223,8 @@
     </section>
 
     <!-- 5 -->
-    <section>
-      <div class="sec-h"><div class="sec-n">5</div><div><h2>구조 유지 시스템 — 지도 = 실물</h2><div class="sec-sub">신설 · 2026-07-01 구조 표류 사건의 재발 방지 장치</div></div></div>
+    <section id="s5">
+      <div class="sec-h"><div class="sec-n">5</div><div><h2>구조 유지 시스템 — 지도 = 실물</h2><div class="sec-sub">2026-07-01 구조 표류 사건의 재발 방지 장치</div></div></div>
       <p>7월 1일, 우리는 <strong>안내판 16개가 23일 동안 존재하지 않는 폴더</strong>(10_marketing·20_marco)를 가리키고 있었음을 발견했습니다. 폴더는 이사 갔는데 안내판이 안 따라와 3명의 머릿속이 갈라진 것. 이 섹션은 그 사건의 조항화입니다. 원칙은 하나 — <span class="hl">지도(문서)와 실물(폴더·자동화)은 항상 같아야 한다.</span></p>
 
       <div class="clause">
@@ -244,9 +264,9 @@
     </section>
 
     <!-- 6 -->
-    <section>
+    <section id="s6">
       <div class="sec-h"><div class="sec-n">6</div><div><h2>정본(SSOT) 맵</h2><div class="sec-sub">정보 종류마다 정본은 하나 — 중복 금지, 나머지는 링크</div></div></div>
-      <p>이 표는 <b>도구 배정</b>(§2 4축 — 어떤 업무는 어떤 도구로)이 아니라, <b>큰 정보 덩어리 하나가 어디에 사나</b>의 실전 lookup입니다. 5개뿐 — 늘리지 않습니다.</p>
+      <p><b>찾는 정보가 어디에 사는지</b> 볼 때 여는 표입니다 (어떤 업무를 어떤 도구로 하는지는 §2). 5개뿐 — 늘리지 않습니다.</p>
       <table>
         <tr><th style="width:270px">정보 종류</th><th>정본 위치</th></tr>
         <tr><td>회사 문서 전반<br><span style="color:var(--sub);font-size:12.5px">결정·폐기·SOP·계획·이력·관계 등 텍스트로 남기는 모든 것</span></td><td><b>GitHub</b> — 구체적 파일 위치는 §4 라우팅(팀 CLAUDE.md)이 안내. 예: 결정=<code>00_compass/decisions/</code>, 마케팅 실행계획, US 퍼포먼스 changelog, Zishel 관계 등</td></tr>
@@ -259,9 +279,9 @@
     </section>
 
     <!-- 7 -->
-    <section>
-      <div class="sec-h"><div class="sec-n">7</div><div><h2>암묵지 파이프라인</h2><div class="sec-sub">신설 · 세션에서 나온 지식은 사람이 옮기지 않는다</div></div></div>
-      <p>3인 각자의 맥에서 러너가 매일 <b>세션 transcript + Slack 팀채널 델타 + Notion 델타</b>를 증류해 저장소의 정본 위치로 흘려보냅니다. 인증은 팀 요금제 OAuth 토큰(연 1회 재발급), 러너는 시작 시 git pull로 자가배포, 놓친 날은 <code>--day</code> 백필로 소급합니다.</p>
+    <section id="s7">
+      <div class="sec-h"><div class="sec-n">7</div><div><h2>암묵지 파이프라인</h2><div class="sec-sub">세션에서 나온 지식은 사람이 옮기지 않는다</div></div></div>
+      <p>3인 각자의 맥에서 러너가 매일 <b>그날의 세션 기록 + Slack + Notion 변경분</b>을 읽고, 아래 분류표대로 저장소의 정본 위치에 나눠 넣습니다. 맥이 꺼져 있어 놓친 날은 다음 실행 때 소급 처리되고, 러너 코드는 실행 시 스스로 최신으로 업데이트됩니다 (인증 토큰은 연 1회 갱신).</p>
       <table>
         <tr><th style="width:170px">트리거</th><th>동작</th></tr>
         <tr><td><b>수동</b> — "암묵지 정리" / "세션 마감"</td><td>dry-run 표 제시 → <b>사람 승인 후</b> 반영</td></tr>
@@ -279,14 +299,14 @@
       </table>
       <div class="routing" style="margin-top:16px">
         <div class="rt">특수 라우팅 — US 퍼포먼스 (시간순 추적 최우선)</div>
-        <p style="font-size:14.5px;color:var(--ink)">6분류와 별개로, US 퍼포먼스의 <b>모든 변화</b>(자동·수동·콘솔 직접 변경 포함)는 <code>changelog.md</code>에 시간순 append하고, 결과 데이터가 나오면 해당 항목에 <b>"→ 결과(날짜): 수치/판정"</b>을 이어붙입니다 — 이 cause→effect 사슬이 주간 리포트의 토대.</p>
+        <p style="font-size:14.5px;color:var(--ink)">6분류와 별개로, US 퍼포먼스의 <b>모든 변화</b>(자동·수동·콘솔 직접 변경 포함)는 <code>changelog.md</code>에 시간순 append하고, 결과 데이터가 나오면 해당 항목에 <b>"→ 결과(날짜): 수치/판정"</b>을 이어붙입니다 — 이 원인→결과 사슬이 주간 리포트의 토대.</p>
       </div>
       <div class="callout">분류가 헷갈리면 <code>00_compass/_tacit-extract.md</code>를 보면 됩니다 — 분류 기준의 원본. 확신이 안 서는 건 억지로 끼워 맞추지 말고 <b>_inbox에 둡니다</b>(§5). 보고 채널은 셋으로 나뉩니다 — 암묵지 정리 결과 → <b>#vdvia-암묵지-리포트</b> · 구조·자동화 이상 → <b>#ai-알림</b> · 회의 공지 → <b>#전체공지방</b>.<br><br><b>기억할 것 한 가지</b> — 분류해서 저장하는 걸로 끝이 아닙니다. 그 팀 CLAUDE.md나 playbook에 <b>링크가 걸려 있어야</b> 다음 세션이 그걸 실제로 읽습니다. 링크를 안 걸어두면 아무리 잘 정리해도 다음엔 아무도 모릅니다.</div>
     </section>
 
     <!-- 8 -->
-    <section>
-      <div class="sec-h"><div class="sec-n">8</div><div><h2>자동화 — 인벤토리 · 성숙도 · 등록 규약</h2><div class="sec-sub">전면 개편 · 이 표가 자동화의 정본 목록</div></div></div>
+    <section id="s8">
+      <div class="sec-h"><div class="sec-n">8</div><div><h2>자동화 — 인벤토리 · 성숙도 · 등록 규약</h2><div class="sec-sub">이 표가 자동화의 정본 목록 — 상태가 바뀌면 표도 같이 바뀐다</div></div></div>
       <p><b>성숙도 사다리:</b> <span class="lvl">L0</span> 사람 손 → <span class="lvl">L1</span> AI 보조(세션에서 사람이 시킴) → <span class="lvl">L2</span> 스케줄 자동 + 사후 Slack 보고 → <span class="lvl">L3</span> 자율(스스로 감지·예방·제안·자기종료). 현재 대부분 L2, L3 씨앗 1건. 아래 표는 <b>실제 가동 중인 자동화만</b> — 설계만 있고 미착수인 것은 올리지 않습니다.</p>
       <table class="dense" style="margin-top:14px">
         <tr><th>자동화</th><th style="width:90px">머신</th><th style="width:104px">주기</th><th>하는 일</th><th style="width:130px">보고</th><th style="width:76px">사람 개입</th><th style="width:70px">상태</th><th style="width:44px">L</th></tr>
@@ -310,13 +330,13 @@
           <li><b>③ 뭘 하는지 레포에 적어둔다</b> — 로컬 PC에만 있으면 안 됩니다.</li>
           <li><b>④ 멈추거나 없앴으면 README 첫 줄과 이 표를 같이 고친다.</b></li>
         </ul>
-        <p style="margin-top:10px;font-size:14px;color:var(--sub)">새 자동화를 만들면 이 표에 한 줄 추가하는 것도 포함(§5 규칙⑤). 실행체가 아닌 <b>지능 정의</b>(봇 정의·스킬·마스터 프롬프트)는 별도 대장 <code>00_compass/prompt-assets.md</code>에 등재 — 프롬프트도 회사 IP입니다.</p>
+        <p style="margin-top:10px;font-size:14px;color:var(--sub)">새 자동화를 만들면 이 표에 한 줄 추가하는 것도 포함(§5 규칙⑤). 돌아가는 프로그램이 아닌 <b>프롬프트 문서</b>(봇 정의·스킬·마스터 프롬프트)는 별도 목록 <code>00_compass/prompt-assets.md</code>에 등재 — 프롬프트도 회사 재산입니다.</p>
       </div>
       <div class="callout" style="margin-top:16px"><b>다음 단계 — 봇 보고를 창구 하나로 모으기</b> · 지금은 위 자동화들이 각자 따로 Slack에 보고해서 사람이 전부 읽습니다("받은편지함 12개"). 다음 단계는 이 보고들을 <b>하루 1번 대신 읽고 문제 있는 것만 골라 알려주는 작은 프로그램</b>(#10 Daily Coordinator)을 만드는 것 — 사람이 읽을 게 12개에서 1개로 줍니다. 계획 정본: <code>50_operations/10-daily-coordinator/role.md</code> (📐 아직 안 만듦 — 조건: Marco 맥 바닥 정리 + Marco 봇 생존신호 + 3머신 신호 통합). 위 표에서 "사람 개입"이 <b>없음</b>인 행부터 이 창구로 모입니다.</div>
     </section>
 
     <!-- 9 -->
-    <section>
+    <section id="s9">
       <div class="sec-h"><div class="sec-n">9</div><div><h2>조직 구조 — VDVIA + Zishel Group + AI</h2><div class="sec-sub">Resource Leverage</div></div></div>
       <p>VDVIA의 민첩한 코어 인력, Zishel Group의 이미 완비된 팀·인프라, 그리고 AI의 실행력을 결합합니다. 인력이 부족한 영역은 채용이 아니라 <strong>AI와 Zishel Group의 리소스를 레버리지</strong>하여 운영합니다.</p>
       <table>
@@ -335,21 +355,21 @@
     </section>
 
     <!-- 10 -->
-    <section>
+    <section id="s10">
       <div class="sec-h"><div class="sec-n">10</div><div><h2>휴대폰으로 일 시키기 — 입구 3개</h2><div class="sec-sub">Mobile &amp; Remote · 불변 — 맥북이 없어도 일은 돌아간다</div></div></div>
       <p>이동 중이거나 맥북이 없을 때도 <strong>휴대폰으로 AI에게 일을 시킬 수 있습니다.</strong> 입구는 3개이고, 기억할 규칙은 한 줄입니다.</p>
       <table>
         <tr><th style="width:190px">입구</th><th style="width:330px">쉽게 말하면</th><th>언제 쓰나</th></tr>
         <tr><td><b>① Slack에서<br>@Claude 멘션</b></td><td><b>외주 작업실에 일 던지기.</b> 클라우드 작업실에서 회사 문서(GitHub)를 보고 일한 뒤 결과를 스레드로 가져옵니다. <b>맥북이 꺼져 있어도 됩니다.</b></td><td><b>문서·플랜·코드 작업 전부.</b><br>이동 중 90%는 이것</td></tr>
         <tr><td><b>② Remote Control</b><br><span style="color:var(--sub);font-size:13px">폰 Claude 앱</span></td><td><b>맥북 화면을 폰에 들고 다니기.</b> 맥북 안의 모든 것(광고콘솔·로컬 파일)을 쓸 수 있고, 일하는 걸 보다가 중간에 끼어들 수 있습니다.</td><td>맥북에서만 되는 일을<br><b>길게, 대화하며</b></td></tr>
-        <tr><td><b>③ 내부 봇 멘션</b><br><span style="color:var(--sub);font-size:13px">#john-alert</span></td><td><b>맥북에 쪽지 남기기.</b> 한 줄 던지면 맥북이 혼자 일하고 결과만 답장합니다.</td><td>맥북에서만 되는 일을<br><b>한 줄로 짧게</b></td></tr>
+        <tr><td><b>③ 내부 봇 멘션</b><br><span style="color:var(--sub);font-size:13px">#john-alert · 현재 John 맥만</span></td><td><b>맥북에 쪽지 남기기.</b> 한 줄 던지면 맥북이 혼자 일하고 결과만 답장합니다.</td><td>맥북에서만 되는 일을<br><b>한 줄로 짧게</b></td></tr>
       </table>
       <div class="callout"><b>한 줄 규칙 — 회사 문서 일은 @Claude · 맥북 일은 길면 폰(②), 짧으면 쪽지(③).</b><br>새 구성원은 ①만 알면 시작: Slack → Apps → Claude → Connect → 조직 선택에서 <b>반드시 "VDVIA"</b> (1회, 2분). ②·③은 해당 맥북이 켜져 있어야 합니다. 공식 @Claude는 <b>사람용 대화 입구</b>, 내부 봇은 <b>자동화의 발송 통로</b> — 역할이 달라 둘 다 유지합니다.</div>
     </section>
 
     <!-- 11 -->
-    <section>
-      <div class="sec-h"><div class="sec-n">11</div><div><h2>모델·토큰 가드 — 공유 한도 안에서 일하기</h2><div class="sec-sub">신설 · Team Plan 5시간 사용량 한도는 전 구성원이 공유</div></div></div>
+    <section id="s11">
+      <div class="sec-h"><div class="sec-n">11</div><div><h2>모델·토큰 가드 — 공유 한도 안에서 일하기</h2><div class="sec-sub">Team Plan 5시간 사용량 한도는 전 구성원이 공유</div></div></div>
       <p>Team Plan 사용량 한도는 3인이 함께 씁니다. <strong>큰 작업 하나가 5시간 한도의 수십%를 태울 수 있어</strong>, 모델 선택과 작업 규모 판단을 의식적으로 합니다.</p>
       <table>
         <tr><th style="width:130px">모델</th><th>쓸 때</th></tr>
@@ -381,7 +401,7 @@
   </div>
 
   <div class="footer">
-    <b>버전 이력</b> — v2 2026-06-10 (구축 현황 반영) · v3 2026-07-01 (60_agency·7팀 반영) · v4 2026-07-02 (구조 유지 시스템 §5 · 암묵지 파이프라인 §7 · 자동화 인벤토리·로드맵 §8-9 신설 / 야간 배치 분산 구조·보고 채널·회의 앞단 08:00 사실 정정 / 브랜드 3색 정합 — 그린·올리브 제거 / "구축 현황" 섹션 폐지: 상태는 §8 인벤토리와 §9 로드맵이 정본) · v4.1 2026-07-02 (§4 라우팅에 실전 예시 추가 · §6 SSOT 맵 10→8행 간소화(§2 중복 제거·구조안내 정본 단일화) · §7 암묵지 분류에 신호·재사용 루프 추가 · §8에서 미가동 자동화 3건 삭제(serum-27 쿠폰봇·IG DM 체크·AI 스터디 — 실제 가동만 남김) · §9 로드맵 카드형 시각화 · §4/§10 60_agency를 John(리딩)+이솔(서포트)로 전환) · v4.2 2026-07-02 (Zishel 디자이너 스터디 매주 화 11:00로 정정 · §6 SSOT 맵 8→5행 대분류(회사 문서 전반으로 통합, 태스크 정본은 GitHub+Notion으로 확정) · §7·§8 어려운 콜아웃 평이화(스펙이 곧 코드 표현·등록 규약 4조 재작성) · §9 로드맵을 이사·CCTV·로봇청소기 비유로 재구성, 세부 체크리스트는 automation-backlog.md로 이전) · v4.3 2026-07-02 (§9 자동화 로드맵 섹션 전체 삭제 — 세부 항목은 이미 automation-backlog.md·50_operations/README.md가 정본이라 중복이었음. 이후 §10 조직구조·§11 모바일 입구가 §9·§10으로 당겨짐, §8 shopee 행의 §9 참조도 갱신) · v4.4 2026-07-03 (§11 "모델·토큰 가드" 신설 — 루트 CLAUDE.md에 전날 적용된 모델 선택 가이드 Fable 행 + 대규모 작업 사전 스코핑 규칙을 매뉴얼에도 반영. 기존 섹션 번호·크로스레퍼런스 보존 위해 맨 뒤 §11로 추가, 재배치 없음) · <b>v4.5 2026-07-03</b> (봇 보고 창구 통합 준비 — §8 표에 "사람 개입" 열 신설 + "다음 단계: 보고 창구 하나로" 조항 + 봇 보고 요약 프로그램 계획서(50_operations/10-daily-coordinator/role.md·아직 안 만듦) + /critique 검사 도구(.claude/commands/) + 프롬프트 재산 목록(00_compass/prompt-assets.md) + §7 "주 3회 반복 = 자동화 후보" 임계 + §11 Plan Mode 관례. 근거: decisions/2026-07-03-L6-오케스트레이션-전환.md / 같은 날 전체 문서를 쉬운 말로 재작성)<br>
+    <b>버전 이력</b> — v2 2026-06-10 (구축 현황 반영)<br>v3 2026-07-01 (60_agency·7팀 반영)<br>v4 2026-07-02 (구조 유지 시스템 §5 · 암묵지 파이프라인 §7 · 자동화 인벤토리·로드맵 §8-9 신설 / 야간 배치 분산 구조·보고 채널·회의 앞단 08:00 사실 정정 / 브랜드 3색 정합 — 그린·올리브 제거 / "구축 현황" 섹션 폐지: 상태는 §8 인벤토리와 §9 로드맵이 정본)<br>v4.1 2026-07-02 (§4 라우팅에 실전 예시 추가 · §6 SSOT 맵 10→8행 간소화(§2 중복 제거·구조안내 정본 단일화) · §7 암묵지 분류에 신호·재사용 루프 추가 · §8에서 미가동 자동화 3건 삭제(serum-27 쿠폰봇·IG DM 체크·AI 스터디 — 실제 가동만 남김) · §9 로드맵 카드형 시각화 · §4/§10 60_agency를 John(리딩)+이솔(서포트)로 전환)<br>v4.2 2026-07-02 (Zishel 디자이너 스터디 매주 화 11:00로 정정 · §6 SSOT 맵 8→5행 대분류(회사 문서 전반으로 통합, 태스크 정본은 GitHub+Notion으로 확정) · §7·§8 어려운 콜아웃 평이화(스펙이 곧 코드 표현·등록 규약 4조 재작성) · §9 로드맵을 이사·CCTV·로봇청소기 비유로 재구성, 세부 체크리스트는 automation-backlog.md로 이전)<br>v4.3 2026-07-02 (§9 자동화 로드맵 섹션 전체 삭제 — 세부 항목은 이미 automation-backlog.md·50_operations/README.md가 정본이라 중복이었음. 이후 §10 조직구조·§11 모바일 입구가 §9·§10으로 당겨짐, §8 shopee 행의 §9 참조도 갱신)<br>v4.4 2026-07-03 (§11 "모델·토큰 가드" 신설 — 루트 CLAUDE.md에 전날 적용된 모델 선택 가이드 Fable 행 + 대규모 작업 사전 스코핑 규칙을 매뉴얼에도 반영. 기존 섹션 번호·크로스레퍼런스 보존 위해 맨 뒤 §11로 추가, 재배치 없음)<br><b>v4.5 2026-07-03</b> (봇 보고 창구 통합 준비 — §8 표에 "사람 개입" 열 신설 + "다음 단계: 보고 창구 하나로" 조항 + 봇 보고 요약 프로그램 계획서(50_operations/10-daily-coordinator/role.md·아직 안 만듦) + /critique 검사 도구(.claude/commands/) + 프롬프트 재산 목록(00_compass/prompt-assets.md) + §7 "주 3회 반복 = 자동화 후보" 임계 + §11 Plan Mode 관례. 근거: decisions/2026-07-03-L6-오케스트레이션-전환.md / 같은 날 전체 문서를 쉬운 말로 재작성)<br><b>v4.6 2026-07-03</b> (AX·UX 최종 정비 — 그룹형 앵커 목차 신설(섹션 번호는 불변 유지, 병합 대신 목차 그룹으로 해결) · "신설/전면 개편" 시점 딱지 제거 · §7 도입부·§6 도입부·§8 콜아웃 평이화(쉬운 말 원칙) · §3 야간 배치 라벨 "밤~다음날 오전"으로 사실 정합 · §10 내부 봇 "현재 John 맥만" 명시 · 버전 이력 버전별 줄바꿈)<br>
     정본: <b>00_compass/vdvia-operating-manual.html</b> · 게시(noindex, 링크 공유 전용): <b>https://vdvia.github.io/vdvia-manual/</b> · VDVIA · a ZISHEL company · LEMONDERMA
   </div>
 </div>
