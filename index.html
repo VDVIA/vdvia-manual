@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
-<title>VDVIA AI 네이티브 운영 매뉴얼 v4.4</title>
+<title>VDVIA AI 네이티브 운영 매뉴얼 v4.5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
     <span class="eyebrow">VDVIA × ZISHEL GROUP × AI</span>
     <h1 class="fr">AI 네이티브 운영 매뉴얼</h1>
     <div class="lede">3인 + AI로 운영하는 회사의 일하는 방식. 구성원의 머릿속 = vdvia 폴더 = GitHub를 동일하게 유지하고, 암묵지를 매일 자산으로 바꿔, 대부분의 업무가 자동화되는 조직 체계를 정의합니다.</div>
-    <div class="meta"><span><b>대상</b> 내부 운영 기준</span><span><b>작성</b> 제품성장팀</span><span><b>버전</b> v4.4 · 2026-07-03 (§11 모델·토큰 가드 신설 · §0~§11 총 12섹션)</span></div>
+    <div class="meta"><span><b>대상</b> 내부 운영 기준</span><span><b>작성</b> 제품성장팀</span><span><b>버전</b> v4.5 · 2026-07-03 (오케스트레이션 전환 착수 — §8 사람 개입 열·코디네이터·크리틱·프롬프트 자산)</span></div>
   </div>
 
   <div class="body">
@@ -274,7 +274,7 @@
         <tr><td><b>③ 판단 휴리스틱</b></td><td>"이런 경우엔 이렇게" · 동일 판단 2회 이상 반복</td><td>playbook 3계층 — 회사 <code>00_compass/playbook.md</code> / John <code>30_growth/</code> / Marco <code>50_operations/</code></td></tr>
         <tr><td><b>④ 시장·페르소나 시그널</b></td><td>고객 반응·채널 성과·경쟁사 행동 — 가설을 흔드는 데이터</td><td><code>50_operations/strategy-state.md</code> 캔버스 (입증/가설/폐기 칸 이동)</td></tr>
         <tr><td><b>⑤ 시스템·도구 노하우</b></td><td>"이 API는 이렇게 불러야 함" · 툴의 비자명한 quirk</td><td>notes.md 계층 (에이전트별 → 팀 공통)</td></tr>
-        <tr><td><b>⑥ 자동화 후보</b></td><td>"이거 매번 손으로 함" · 반복 작업 발견</td><td>automation-backlog.md (John / Marco)</td></tr>
+        <tr><td><b>⑥ 자동화 후보</b></td><td>"이거 매번 손으로 함" · <b>같은 수작업 주 3회 이상 = 자동 승격 후보 [HIGH]</b></td><td>automation-backlog.md (John / Marco)</td></tr>
         <tr><td style="color:var(--sub)">세션 raw <span style="font-size:11px">(분류 아님·병행 필수)</span></td><td style="color:var(--sub)">위 6개와 무관하게 매 세션 항상 기록</td><td><code>99_log/{구성원}/sessions/</code> — 합류 시 폴더+러너를 함께 추가 (Sol 6/16 선례)</td></tr>
       </table>
       <div class="routing" style="margin-top:16px">
@@ -289,19 +289,19 @@
       <div class="sec-h"><div class="sec-n">8</div><div><h2>자동화 — 인벤토리 · 성숙도 · 등록 규약</h2><div class="sec-sub">전면 개편 · 이 표가 자동화의 정본 목록</div></div></div>
       <p><b>성숙도 사다리:</b> <span class="lvl">L0</span> 사람 손 → <span class="lvl">L1</span> AI 보조(세션에서 사람이 시킴) → <span class="lvl">L2</span> 스케줄 자동 + 사후 Slack 보고 → <span class="lvl">L3</span> 자율(스스로 감지·예방·제안·자기종료). 현재 대부분 L2, L3 씨앗 1건. 아래 표는 <b>실제 가동 중인 자동화만</b> — 설계만 있고 미착수인 것은 올리지 않습니다.</p>
       <table class="dense" style="margin-top:14px">
-        <tr><th>자동화</th><th style="width:90px">머신</th><th style="width:104px">주기</th><th>하는 일</th><th style="width:130px">보고</th><th style="width:70px">상태</th><th style="width:44px">L</th></tr>
-        <tr><td><b>야간 암묵지 러너 ×3</b></td><td>3인 각자</td><td>John 00:00<br>Sol 01:00<br>Marco 11:00</td><td>세션·Slack·Notion 델타 증류 → 레포 정본 반영</td><td>#vdvia-암묵지-리포트</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td><b>아침 브리핑 + 헬스보드 + 드리프트</b></td><td>John</td><td>매일 07:00</td><td>메일 분석 · 자동화 하트비트 · 구조 표류 스캔</td><td>#ai-알림 · #john-alert</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td><b>회의 공지봇</b></td><td>John</td><td>평일 08:00</td><td>노션 미팅록 생성 + 공지 (launchd 단독 — MCP 중복 등록 7/2 해소)</td><td>#전체공지방</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td><b>회의록봇</b></td><td>John</td><td>상시</td><td>회의 전사·요약 → Notion DB · 워치독 자가복구</td><td>Notion</td><td><span class="tag on">가동</span></td><td><span class="lvl">L3</span></td></tr>
-        <tr><td>email-listener</td><td>John</td><td>상시</td><td>Slack 쪽지 → 맥 실행 통로</td><td>#john-alert</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td>US 퍼포먼스 함대</td><td>John</td><td>07:50~ 하루 수회</td><td>상태 갱신 · 일일 리포트 · 대시보드 재생성 — 상세는 30_growth CLAUDE.md 위임</td><td>#제품성장팀 외</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td>shopee 월간 캠페인</td><td>John</td><td>매월 1일</td><td>캠페인 생성 (유령 경로 7/2 수정 — _archive 참조로 재지정)</td><td>—</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td>gov-support (03)</td><td>Marco</td><td>매일 07:30</td><td>정부지원 공고 스캔 · 대시보드</td><td>Slack</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td>logistics (07)</td><td>Marco</td><td>매일 08:00</td><td>물류·재고 브리핑</td><td>Slack</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td>finance (01) · cgetc 수집기</td><td>Marco</td><td>08:00 · 10분</td><td>P&amp;L 브리핑 · ERP 수집</td><td>Slack</td><td><span class="tag wait">문서상</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td>daily-team-reports</td><td>Marco</td><td>매일 08:00</td><td>팀 대시보드 발행 + 팀별 Slack 링크</td><td>팀 채널</td><td><span class="tag wait">대기</span></td><td><span class="lvl">L2</span></td></tr>
-        <tr><td>tiktok-shop-affiliate</td><td>John</td><td>—</td><td>어필리에이트 운영 — 6/8 재편 때 의도적 중지(launchd 4종 제거). 재개 절차는 해당 README 첫 줄</td><td>—</td><td><span class="tag dorm">휴면</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><th>자동화</th><th style="width:90px">머신</th><th style="width:104px">주기</th><th>하는 일</th><th style="width:130px">보고</th><th style="width:76px">사람 개입</th><th style="width:70px">상태</th><th style="width:44px">L</th></tr>
+        <tr><td><b>야간 암묵지 러너 ×3</b></td><td>3인 각자</td><td>John 00:00<br>Sol 01:00<br>Marco 11:00</td><td>세션·Slack·Notion 델타 증류 → 레포 정본 반영</td><td>#vdvia-암묵지-리포트</td><td>없음<br><span style='font-size:11px;color:var(--sub)'>오분류는 revert</span></td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td><b>아침 브리핑 + 헬스보드 + 드리프트</b></td><td>John</td><td>매일 07:00</td><td>메일 분석 · 자동화 하트비트 · 구조 표류 스캔</td><td>#ai-알림 · #john-alert</td><td>없음</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td><b>회의 공지봇</b></td><td>John</td><td>평일 08:00</td><td>노션 미팅록 생성 + 공지 (launchd 단독 — MCP 중복 등록 7/2 해소)</td><td>#전체공지방</td><td>없음</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td><b>회의록봇</b></td><td>John</td><td>상시</td><td>회의 전사·요약 → Notion DB · 워치독 자가복구</td><td>Notion</td><td>없음</td><td><span class="tag on">가동</span></td><td><span class="lvl">L3</span></td></tr>
+        <tr><td>email-listener</td><td>John</td><td>상시</td><td>Slack 쪽지 → 맥 실행 통로</td><td>#john-alert</td><td>사람=입력원</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td>US 퍼포먼스 함대</td><td>John</td><td>07:50~ 하루 수회</td><td>상태 갱신 · 일일 리포트 · 대시보드 재생성 — 상세는 30_growth CLAUDE.md 위임</td><td>#제품성장팀 외</td><td>액션 승인</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td>shopee 월간 캠페인</td><td>John</td><td>매월 1일</td><td>캠페인 생성 (유령 경로 7/2 수정 — _archive 참조로 재지정)</td><td>—</td><td>없음<br><span style='font-size:11px;color:var(--sub)'>막히면 보고</span></td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td>gov-support (03)</td><td>Marco</td><td>매일 07:30</td><td>정부지원 공고 스캔 · 대시보드</td><td>Slack</td><td>결과 검토</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td>logistics (07)</td><td>Marco</td><td>매일 08:00</td><td>물류·재고 브리핑</td><td>Slack</td><td>결과 검토</td><td><span class="tag on">가동</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td>finance (01) · cgetc 수집기</td><td>Marco</td><td>08:00 · 10분</td><td>P&amp;L 브리핑 · ERP 수집</td><td>Slack</td><td>결과 검토</td><td><span class="tag wait">문서상</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td>daily-team-reports</td><td>Marco</td><td>매일 08:00</td><td>팀 대시보드 발행 + 팀별 Slack 링크</td><td>팀 채널</td><td>없음</td><td><span class="tag wait">대기</span></td><td><span class="lvl">L2</span></td></tr>
+        <tr><td>tiktok-shop-affiliate</td><td>John</td><td>—</td><td>어필리에이트 운영 — 6/8 재편 때 의도적 중지(launchd 4종 제거). 재개 절차는 해당 README 첫 줄</td><td>—</td><td>—</td><td><span class="tag dorm">휴면</span></td><td><span class="lvl">L2</span></td></tr>
       </table>
       <div class="callout" style="margin-top:16px"><b>새 자동화를 "가동 중"이라 부르려면 이 4가지가 돼 있어야 합니다</b>
         <ul class="clean" style="margin-top:10px">
@@ -310,8 +310,9 @@
           <li><b>③ 뭘 하는지 레포에 적어둔다</b> — 로컬 PC에만 있으면 안 됩니다.</li>
           <li><b>④ 멈추거나 없앴으면 README 첫 줄과 이 표를 같이 고친다.</b></li>
         </ul>
-        <p style="margin-top:10px;font-size:14px;color:var(--sub)">새 자동화를 만들면 이 표에 한 줄 추가하는 것도 포함(§5 규칙⑤).</p>
+        <p style="margin-top:10px;font-size:14px;color:var(--sub)">새 자동화를 만들면 이 표에 한 줄 추가하는 것도 포함(§5 규칙⑤). 실행체가 아닌 <b>지능 정의</b>(봇 정의·스킬·마스터 프롬프트)는 별도 대장 <code>00_compass/prompt-assets.md</code>에 등재 — 프롬프트도 회사 IP입니다.</p>
       </div>
+      <div class="callout" style="margin-top:16px"><b>다음 단계 — 오케스트레이션 (human on the loop)</b> · 지금은 위 자동화들이 각자 사람에게 직접 보고하는 구조("받은편지함 12개")입니다. 다음 단계는 <b>메인 에이전트(Daily Coordinator, #10)</b>가 전 봇의 신호·산출물을 매일 읽고 <b>예외만 사람에게</b> 보고하는 구조 — 사람이 모든 보고를 읽는 감독(in the loop)에서 예외만 받는 감독(on the loop)으로. 스펙 정본: <code>50_operations/10-daily-coordinator/role.md</code> (📐 미가동 — 가동 전제: 바닥 정리 + Marco 봇 heartbeat + 헬스보드 연합). "사람 개입" 열이 없음인 행부터 코디네이터 산하로 이관됩니다.</div>
     </section>
 
     <!-- 9 -->
@@ -374,13 +375,13 @@
         <tr><td><b>기본</b></td><td>통상 진행, 서브에이전트 최소</td><td>Sonnet (판단 지점만 상위 모델)</td></tr>
         <tr><td><b>헤비</b></td><td>fan-out + 적대 검증 포함</td><td>상위 모델 필요 시에만</td></tr>
       </table>
-      <div class="callout" style="margin-top:16px"><b>모델 자동 제안 규칙</b> — 메인 세션 모델은 Claude가 직접 못 바꿉니다(<code>/model</code>은 사람 몫). 작업이 실행·반복형인데 세션이 Fable/Opus면 스코핑 시 <code>/model sonnet</code> 전환을 함께 제안합니다. 서브에이전트는 <b>기본 sonnet으로 스폰</b> — 모델 미지정은 세션 모델을 그대로 상속하므로, Fable 세션에서 서브에이전트를 그냥 fan-out하면 안 됩니다. 기계적 수집·후처리는 haiku, 전략 판단이 필요한 에이전트만 상위 모델. 자동화 스크립트는 위 표대로 <code>--model</code> 명시.<br><br><b>모니터링</b> — 큰 작업 전 <code>/usage</code>로 5시간 윈도 소진율 확인 권장 (사람이 실행).</div>
+      <div class="callout" style="margin-top:16px"><b>모델 자동 제안 규칙</b> — 메인 세션 모델은 Claude가 직접 못 바꿉니다(<code>/model</code>은 사람 몫). 작업이 실행·반복형인데 세션이 Fable/Opus면 스코핑 시 <code>/model sonnet</code> 전환을 함께 제안합니다. 서브에이전트는 <b>기본 sonnet으로 스폰</b> — 모델 미지정은 세션 모델을 그대로 상속하므로, Fable 세션에서 서브에이전트를 그냥 fan-out하면 안 됩니다. 기계적 수집·후처리는 haiku, 전략 판단이 필요한 에이전트만 상위 모델. 자동화 스크립트는 위 표대로 <code>--model</code> 명시.<br><br><b>모니터링</b> — 큰 작업 전 <code>/usage</code>로 5시간 윈도 소진율 확인 권장 (사람이 실행).<br><br><b>Plan Mode 관례</b> — 새 자동화·도구·앱 빌드는 <b>Plan Mode로 계획을 먼저 승인받고 구현</b>합니다 (계획 없는 빌드 = 토큰·재작업 낭비의 최대 원인). 스코핑 트리거에 걸리는 빌드는 스코핑 + Plan Mode 둘 다.</div>
     </section>
 
   </div>
 
   <div class="footer">
-    <b>버전 이력</b> — v2 2026-06-10 (구축 현황 반영) · v3 2026-07-01 (60_agency·7팀 반영) · v4 2026-07-02 (구조 유지 시스템 §5 · 암묵지 파이프라인 §7 · 자동화 인벤토리·로드맵 §8-9 신설 / 야간 배치 분산 구조·보고 채널·회의 앞단 08:00 사실 정정 / 브랜드 3색 정합 — 그린·올리브 제거 / "구축 현황" 섹션 폐지: 상태는 §8 인벤토리와 §9 로드맵이 정본) · v4.1 2026-07-02 (§4 라우팅에 실전 예시 추가 · §6 SSOT 맵 10→8행 간소화(§2 중복 제거·구조안내 정본 단일화) · §7 암묵지 분류에 신호·재사용 루프 추가 · §8에서 미가동 자동화 3건 삭제(serum-27 쿠폰봇·IG DM 체크·AI 스터디 — 실제 가동만 남김) · §9 로드맵 카드형 시각화 · §4/§10 60_agency를 John(리딩)+이솔(서포트)로 전환) · v4.2 2026-07-02 (Zishel 디자이너 스터디 매주 화 11:00로 정정 · §6 SSOT 맵 8→5행 대분류(회사 문서 전반으로 통합, 태스크 정본은 GitHub+Notion으로 확정) · §7·§8 어려운 콜아웃 평이화(스펙이 곧 코드 표현·등록 규약 4조 재작성) · §9 로드맵을 이사·CCTV·로봇청소기 비유로 재구성, 세부 체크리스트는 automation-backlog.md로 이전) · v4.3 2026-07-02 (§9 자동화 로드맵 섹션 전체 삭제 — 세부 항목은 이미 automation-backlog.md·50_operations/README.md가 정본이라 중복이었음. 이후 §10 조직구조·§11 모바일 입구가 §9·§10으로 당겨짐, §8 shopee 행의 §9 참조도 갱신) · <b>v4.4 2026-07-03</b> (§11 "모델·토큰 가드" 신설 — 루트 CLAUDE.md에 전날 적용된 모델 선택 가이드 Fable 행 + 대규모 작업 사전 스코핑 규칙을 매뉴얼에도 반영. 기존 섹션 번호·크로스레퍼런스 보존 위해 맨 뒤 §11로 추가, 재배치 없음)<br>
+    <b>버전 이력</b> — v2 2026-06-10 (구축 현황 반영) · v3 2026-07-01 (60_agency·7팀 반영) · v4 2026-07-02 (구조 유지 시스템 §5 · 암묵지 파이프라인 §7 · 자동화 인벤토리·로드맵 §8-9 신설 / 야간 배치 분산 구조·보고 채널·회의 앞단 08:00 사실 정정 / 브랜드 3색 정합 — 그린·올리브 제거 / "구축 현황" 섹션 폐지: 상태는 §8 인벤토리와 §9 로드맵이 정본) · v4.1 2026-07-02 (§4 라우팅에 실전 예시 추가 · §6 SSOT 맵 10→8행 간소화(§2 중복 제거·구조안내 정본 단일화) · §7 암묵지 분류에 신호·재사용 루프 추가 · §8에서 미가동 자동화 3건 삭제(serum-27 쿠폰봇·IG DM 체크·AI 스터디 — 실제 가동만 남김) · §9 로드맵 카드형 시각화 · §4/§10 60_agency를 John(리딩)+이솔(서포트)로 전환) · v4.2 2026-07-02 (Zishel 디자이너 스터디 매주 화 11:00로 정정 · §6 SSOT 맵 8→5행 대분류(회사 문서 전반으로 통합, 태스크 정본은 GitHub+Notion으로 확정) · §7·§8 어려운 콜아웃 평이화(스펙이 곧 코드 표현·등록 규약 4조 재작성) · §9 로드맵을 이사·CCTV·로봇청소기 비유로 재구성, 세부 체크리스트는 automation-backlog.md로 이전) · v4.3 2026-07-02 (§9 자동화 로드맵 섹션 전체 삭제 — 세부 항목은 이미 automation-backlog.md·50_operations/README.md가 정본이라 중복이었음. 이후 §10 조직구조·§11 모바일 입구가 §9·§10으로 당겨짐, §8 shopee 행의 §9 참조도 갱신) · v4.4 2026-07-03 (§11 "모델·토큰 가드" 신설 — 루트 CLAUDE.md에 전날 적용된 모델 선택 가이드 Fable 행 + 대규모 작업 사전 스코핑 규칙을 매뉴얼에도 반영. 기존 섹션 번호·크로스레퍼런스 보존 위해 맨 뒤 §11로 추가, 재배치 없음) · <b>v4.5 2026-07-03</b> (L6 오케스트레이션 전환 착수 — §8 표에 "사람 개입" 열 신설(in→on the loop 전환 지도) + "다음 단계: 오케스트레이션" 조항 + Daily Coordinator(#10) 스펙 정의(50_operations/10-daily-coordinator/role.md·미가동) + /critique 크리틱 스킬 상설화(.claude/commands/) + 프롬프트 자산 대장 신설(00_compass/prompt-assets.md) + §7 자동화 후보에 "주 3회 = 승격" 임계 + §11 Plan Mode 관례. 근거: decisions/2026-07-03-L6-오케스트레이션-전환.md)<br>
     정본: <b>00_compass/vdvia-operating-manual.html</b> · 게시(noindex, 링크 공유 전용): <b>https://vdvia.github.io/vdvia-manual/</b> · VDVIA · a ZISHEL company · LEMONDERMA
   </div>
 </div>
