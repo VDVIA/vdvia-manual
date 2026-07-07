@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>UAE FBA 입고 절차 — VDVIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --lemon:#F7DE5A; --lemon-tint:#FEF8D9; --lemon-panel:#FBE96B;
+    --ink:#1f1f1f; --sub:#6b6557; --mut:#9a9485; --line:#ece7da; --red:#e23b3b; --red-bg:#fdf3f1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{background:var(--line);}
+  body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;color:var(--ink);background:#fff;width:960px;margin:0 auto;box-shadow:0 0 60px rgba(31,31,31,.08);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  .fr{font-family:'Fraunces',Georgia,serif;}
+  .doc{padding:0 0 80px;}
+
+  .cover{background:var(--lemon-tint);border-bottom:3px solid var(--lemon);padding:56px 76px 48px;}
+  .eyebrow{display:inline-block;font-size:12px;letter-spacing:.24em;color:var(--lemon);background:var(--ink);font-weight:700;padding:5px 14px;border-radius:6px;}
+  .cover h1{font-size:42px;line-height:1.16;font-weight:700;letter-spacing:-.01em;margin:18px 0 12px;color:var(--ink);}
+  .cover .lede{font-size:17px;color:var(--sub);font-weight:500;max-width:700px;line-height:1.6;}
+  .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:28px;font-size:13.5px;color:var(--sub);border-top:1px solid #ede3b8;padding-top:16px;}
+  .meta b{color:var(--ink);font-weight:600;}
+
+  .toc{padding:22px 76px 24px;border-bottom:1px solid var(--line);background:#fcfaf1;display:flex;flex-direction:column;gap:9px;}
+  .toc-t{font-size:11.5px;font-weight:800;letter-spacing:.18em;color:var(--mut);}
+  .toc-g{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .toc-l{font-size:11.5px;font-weight:700;color:var(--lemon);background:var(--ink);border-radius:4px;padding:2px 9px;flex:none;}
+  .toc a{font-size:14px;color:var(--ink);text-decoration:none;font-weight:600;border-bottom:2px solid var(--lemon);padding-bottom:1px;white-space:nowrap;}
+  .toc a:hover{background:var(--lemon-tint);}
+
+  .body{padding:0 76px;}
+  section{padding:42px 0;border-bottom:1px solid var(--line);scroll-margin-top:12px;}
+  section:last-child{border-bottom:none;}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;}
+  .sec-n{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--lemon);background:var(--ink);width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;align-self:center;}
+  h2{font-size:24px;font-weight:800;letter-spacing:-.01em;}
+  .sec-sub{font-size:14px;color:var(--sub);margin-top:3px;font-weight:500;}
+  p{font-size:15.5px;color:#33322c;line-height:1.78;}
+  p+p{margin-top:12px;}
+  strong{font-weight:700;color:var(--ink);}
+  code{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:.88em;background:#f6f2e4;padding:1px 6px;border-radius:5px;}
+
+  .callout{background:var(--lemon-tint);border-left:4px solid var(--lemon);border-radius:0 10px 10px 0;padding:16px 22px;margin-top:16px;font-size:15px;line-height:1.7;color:#3a392f;}
+  .callout b{color:var(--ink);}
+  .callout.warn{border-left-color:var(--red);background:var(--red-bg);}
+
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px;}
+  th{background:var(--ink);color:#fff;text-align:left;padding:11px 15px;font-weight:600;font-size:12.5px;letter-spacing:.02em;}
+  td{padding:11px 15px;border-bottom:1px solid var(--line);vertical-align:top;color:#3a392f;}
+  tr:nth-child(even) td{background:#fcfaf1;}
+  td b,td strong{color:var(--ink);}
+
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:5px;white-space:nowrap;}
+  .tag.on{background:var(--ink);color:var(--lemon);}
+  .tag.wait{background:var(--lemon-tint);color:var(--ink);border:1px solid #e8dfb8;}
+  .tag.blocked{background:#fff;color:var(--red);border:1.3px solid var(--red);}
+  .tag.plan{background:#f0ede2;color:var(--sub);}
+
+  /* pipeline flow */
+  .flow{display:flex;align-items:stretch;gap:0;margin-top:20px;}
+  .fstep{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:16px 16px;background:#fff;position:relative;}
+  .fstep.done{border-color:var(--lemon);background:var(--lemon-tint);}
+  .fstep.now{border-color:var(--red);background:var(--red-bg);}
+  .fstep .fn{font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:var(--sub);}
+  .fstep.done .fn{color:#6b5410;}
+  .fstep.now .fn{color:var(--red);}
+  .fstep .ft{font-size:14.5px;font-weight:700;margin-top:4px;color:var(--ink);}
+  .fstep .fd{font-size:12.5px;color:var(--sub);margin-top:6px;line-height:1.5;}
+  .farrow{width:28px;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:18px;flex:none;}
+
+  /* checklist */
+  ul.check{list-style:none;margin-top:14px;}
+  ul.check li{font-size:15px;line-height:1.7;color:#33322c;padding-left:28px;position:relative;margin-bottom:10px;}
+  ul.check li:before{content:"?";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:5px;background:var(--red);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  ul.check li.ok:before{content:"✓";background:var(--ink);color:var(--lemon);}
+  ul.check li b{color:var(--ink);}
+
+  ul.clean{list-style:none;margin-top:14px;}
+  ul.clean li{font-size:15px;line-height:1.7;color:#33322c;padding-left:20px;position:relative;margin-bottom:8px;}
+  ul.clean li:before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--lemon);}
+  ul.clean li b{color:var(--ink);}
+
+  .clause{border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-top:16px;}
+  .clause .ct{font-size:16px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .clause .ct .no{color:var(--lemon);background:var(--ink);border-radius:5px;padding:1px 8px;font-size:12px;}
+  .clause p{font-size:14.5px;}
+
+  .kpi{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap;}
+  .kcard{flex:1;min-width:140px;border:1.5px solid var(--line);border-radius:12px;padding:16px 18px;background:#fcfaf1;}
+  .kcard .kl{font-size:12px;color:var(--sub);font-weight:600;}
+  .kcard .kv{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--ink);margin-top:4px;}
+  .kcard.warn{background:var(--red-bg);border-color:#f3c9c2;}
+  .kcard.warn .kv{color:var(--red);}
+
+  .closing{background:var(--ink);color:#fff;border-radius:14px;padding:28px 32px;margin-top:8px;}
+  .closing .ct{font-size:13px;letter-spacing:.16em;color:var(--lemon);font-weight:700;}
+  .closing h3{font-size:20px;font-weight:700;margin:8px 0 6px;}
+  .closing p{color:#e9e5d2;font-size:14.5px;line-height:1.7;}
+  .closing a{color:var(--lemon);}
+
+  .footer{padding:32px 76px 0;color:var(--mut);font-size:12.5px;line-height:1.9;}
+  .footer b{color:var(--sub);}
+
+  @media (max-width:1000px){
+    body{width:100%;box-shadow:none;}
+    .cover,.toc,.body,.footer{padding-left:24px;padding-right:24px;}
+    .flow{flex-direction:column;}
+    .farrow{transform:rotate(90deg);height:20px;}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- COVER -->
+  <div class="cover">
+    <span class="eyebrow">50_OPERATIONS · 07-LOGISTICS-INVENTORY</span>
+    <h1 class="fr">Amazon UAE FBA 입고 절차</h1>
+    <div class="lede">한국(VDVIA 자체 물류창고 → 슈크란 지정창고) → 아랍에미리트 두바이(DXB) 항공특송 → 현지 통관 → Amazon FC 입고까지, 슈크란코리아 항공특송 경로 기준 구간별 절차·필요정보·비용 정리.</div>
+    <div class="meta">
+      <span><b>대상</b> Lemonshot Serum(BU-GUG9-BPSR) · Cream(BU-GUG9-BPOQ)</span>
+      <span><b>작성</b> 제품성장팀 (John)</span>
+      <span><b>기준일</b> 2026-07-07</span>
+      <span><b>상태</b> <span class="tag blocked">블로커 있음</span></span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-t">목차</div>
+    <div class="toc-g"><span class="toc-l">현황</span><a href="#s0">0 현재 상태 · 블로커</a><a href="#s1">1 전체 파이프라인</a></div>
+    <div class="toc-g"><span class="toc-l">절차</span><a href="#s2">2 STEP1 한국 출고 준비</a><a href="#s3">3 STEP2 UAE 현지 통관</a><a href="#s4">4 STEP3 현지→FC 입고</a></div>
+    <div class="toc-g"><span class="toc-l">데이터</span><a href="#s5">5 비용·요율 종합</a><a href="#s6">6 이번 발송 물량 계산</a></div>
+    <div class="toc-g"><span class="toc-l">액션</span><a href="#s7">7 필요 정보 체크리스트</a><a href="#s8">8 연락처 · 다음 액션</a></div>
+  </div>
+
+  <div class="body">
+
+    <!-- 0 현재 상태 -->
+    <section id="s0">
+      <div class="sec-h"><div class="sec-n">0</div><div><h2>현재 상태 · 블로커</h2><div class="sec-sub">Snapshot · 2026-07-07 기준</div></div></div>
+      <p>UAE 셀러 계정 활성화, KYC 통과, 가격 세팅, 화장품 등록(ECAS/Montaji)까지 모두 완료됨. <strong>남은 게이트는 재고 물리적 입고 하나뿐</strong>. Seller Central에서 마켓플레이스를 정상 계정("아랍에미리트", 등록 보류 중 아닌 쪽)으로 전환해 Send to Amazon Step 1까지 진입했고, SKU 2종 모두 정상 노출을 확인함.</p>
+      <p>출고 경로는 확정됨: <strong>VDVIA 자체 한국 물류창고 → 슈크란 지정창고</strong>(→ 이후 §1 파이프라인) — 코스맥스 공장·VDVIA 사무실 직송 시나리오는 제외.</p>
+      <div class="callout warn"><b>블로커 — Ship-from 정확한 주소·담당자 정보 미확보.</b> 자체 물류창고에서 출발하는 것은 확정됐지만, 회사 기록(07-logistics-inventory/notes.md·markets.md 등)을 전부 확인해도 <b>이 물류창고의 정식 주소·담당자명·전화번호가 문서화돼 있지 않음</b>(운영은 "프림"이라는 포워더 언급만 있고 주소 없음). Seller Central Ship-from 입력에 필요한 정보라 물류창고 운영 담당자에게 직접 확인 필요(§7).</div>
+      <ul class="check" style="margin-top:20px;">
+        <li class="ok"><b>UAE 셀러 계정 활성화</b> — 완료</li>
+        <li class="ok"><b>KYC 통과</b> — 완료</li>
+        <li class="ok"><b>가격 세팅</b> — 완료</li>
+        <li class="ok"><b>화장품 등록(ECAS/Montaji)</b> — 완료</li>
+        <li class="ok"><b>마켓플레이스 전환 + Send to Amazon Step 1 진입, SKU 노출 확인</b> — 완료 (2026-07-07)</li>
+        <li class="ok"><b>출고 경로 확정</b> — 자체 물류창고 → 슈크란 지정창고 (2026-07-07)</li>
+        <li><b>물류창고 정확한 주소·담당자·전화번호 확보 + Seller Central 입력</b> — 미완료 (블로커)</li>
+        <li><b>포장방식 · 박스규격 확정</b> — 미완료</li>
+        <li><b>FNSKU · 박스라벨 부착 → 물리적 출고</b> — 미착수</li>
+      </ul>
+    </section>
+
+    <!-- 1 전체 파이프라인 -->
+    <section id="s1">
+      <div class="sec-h"><div class="sec-n">1</div><div><h2>전체 파이프라인</h2><div class="sec-sub">슈크란코리아 한국→UAE 항공특송 경로 · 3단계</div></div></div>
+      <p>UAE 입점이 KSA보다 선행 조건이며, 배로 도착한 물량이 한국(ICN)에 있어야 항공특송 절차가 시작됨. 아래 3단계는 <a href="#s2">§2</a>~<a href="#s4">§4</a>에서 각각 상세히 다룸.</p>
+      <div class="flow">
+        <div class="fstep now">
+          <div class="fn">STEP 1</div>
+          <div class="ft">한국 출고 준비</div>
+          <div class="fd">자체 물류창고 → 슈크란 지정창고 · Send to Amazon 신청 · FNSKU/박스라벨 · 수출신고</div>
+        </div>
+        <div class="farrow">→</div>
+        <div class="fstep">
+          <div class="fn">STEP 2</div>
+          <div class="ft">UAE 현지 통관</div>
+          <div class="fd">CI/PL 제출 · IOR·관세·VAT 납부 · 통관 진행</div>
+        </div>
+        <div class="farrow">→</div>
+        <div class="fstep">
+          <div class="fn">STEP 3</div>
+          <div class="ft">현지 → Amazon FC</div>
+          <div class="fd">현지창고 경유 · FC 입고 · 재고 fulfillable 전환</div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:22px;">현재 위치: <b>STEP 1 진입 직전</b> — Send to Amazon Step 1 화면까지는 도달했으나 Ship-from 주소 미등록으로 정지. §0·§7 참조.</div>
+    </section>
+
+    <!-- 2 STEP1 -->
+    <section id="s2">
+      <div class="sec-h"><div class="sec-n">2</div><div><h2>STEP 1 — 한국 출고 준비</h2><div class="sec-sub">Korea Export Prep</div></div></div>
+      <div class="clause">
+        <div class="ct"><span class="no">2.1</span>절차</div>
+        <ol style="margin-left:20px;font-size:15px;line-height:1.9;color:#33322c;">
+          <li><b>VDVIA 자체 한국 물류창고</b>에서 출고 준비 — FNSKU·박스라벨 부착 위치도 이 단계 (정확한 주소·담당자 확인 필요, §7)</li>
+          <li>Amazon Seller Central UAE에서 <b>"Send to Amazon"</b> 신청 (New Seller Central 홈 → "Create shipment" 버튼 → 바로 confirm_content_step 진입)</li>
+          <li><b>FNSKU · 박스라벨</b> 부착</li>
+          <li><b>CI/PL</b>(<code>CIPL 양식_UAE.xlsx</code>) 작성 → 물류창고에서 <b>슈크란 지정창고</b>로 이송·입고</li>
+          <li><b>수출신고</b> 진행</li>
+        </ol>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">2.2</span>필요 정보 · 서류</div>
+        <ul class="clean">
+          <li><b>Ship-from 주소</b> — VDVIA 자체 물류창고로 확정됨. 단 담당자명·정확한 주소·전화번호가 회사 문서에 없어 확보 필요 (현재 미확정, §7 블로커)</li>
+          <li><b>CI/PL 양식</b> — <code>CIPL 양식_UAE.xlsx</code>, 슈크란코리아 지정 양식</li>
+          <li><b>포장방식</b> — Individual units(기본값) vs Case-packed. Seller Central 기본 세팅: 두 SKU 모두 <span class="tag wait">Individual units</span> · <span class="tag wait">Prep not required</span> · <span class="tag wait">Unit labeling: By seller</span>. Case-packed 전환 시 박스당 개수 별도 입력 필요</li>
+          <li><b>박스 규격</b> — 카톤 스펙 기준 47×35×26.5cm (§5.3 참조)</li>
+        </ul>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">2.3</span>비용</div>
+        <p>수출신고 비용 = 인보이스 금액(원화) × 0.1% · <b>최소 ₩11,000 / 최대 ₩66,000</b></p>
+      </div>
+    </section>
+
+    <!-- 3 STEP2 -->
+    <section id="s3">
+      <div class="sec-h"><div class="sec-n">3</div><div><h2>STEP 2 — UAE 현지 통관</h2><div class="sec-sub">Local Customs Clearance</div></div></div>
+      <div class="clause">
+        <div class="ct"><span class="no">3.1</span>절차</div>
+        <ol style="margin-left:20px;font-size:15px;line-height:1.9;color:#33322c;">
+          <li>CI/PL 원본을 <b>디지털로 선제출</b></li>
+          <li>선적 후 <b>30일 이내</b> 하드카피를 <b>등기우편</b>으로 별도 발송</li>
+          <li>슈크란코리아 현지 파트너가 통관 진행</li>
+        </ol>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">3.2</span>비용 구성</div>
+        <table>
+          <tr><th>항목</th><th>요율</th></tr>
+          <tr><td>IOR 대행</td><td>화물가 3% · <b>최소 $200</b></td></tr>
+          <tr><td>관세</td><td>5%</td></tr>
+          <tr><td>VAT</td><td>5%</td></tr>
+          <tr><td>통관 진행비</td><td><b>$100/건</b></td></tr>
+        </table>
+      </div>
+      <div class="callout">디지털 선제출을 놓치면 통관이 지연되고, 하드카피 등기를 30일 내 못 보내면 후속 건 진행에 지장이 생길 수 있음 — 서류 발송 기한을 캘린더에 별도 등록 권장.</div>
+    </section>
+
+    <!-- 4 STEP3 -->
+    <section id="s4">
+      <div class="sec-h"><div class="sec-n">4</div><div><h2>STEP 3 — 현지 → Amazon FC 입고</h2><div class="sec-sub">Local Warehouse → Fulfillment Center</div></div></div>
+      <div class="clause">
+        <div class="ct"><span class="no">4.1</span>절차</div>
+        <p>통관 완료 → 현지(두바이) 창고 경유 → Amazon FC 입고 → Seller Central 재고 상태가 <code>fulfillable</code>로 전환.</p>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">4.2</span>권장 최소 물량</div>
+        <p><b>1건당 최소 150kg 이상</b> 출고 권장 — 소량 발송은 건당 고정비(DXB→FBA $350/건~) 비중이 커져 단가가 급격히 나빠짐. <span class="tag blocked">주의</span> 이번 발송 계획 물량(세럼200+크림450)은 이 기준에 못 미침 — §6 참조.</p>
+      </div>
+    </section>
+
+    <!-- 5 비용·요율 -->
+    <section id="s5">
+      <div class="sec-h"><div class="sec-n">5</div><div><h2>비용 · 요율 종합</h2><div class="sec-sub">2026-06-25 기준, 수시 변동 — 부킹 전 재확인 필수</div></div></div>
+      <div class="clause">
+        <div class="ct"><span class="no">5.1</span>항공 요율 (ICN → 현지)</div>
+        <table>
+          <tr><th>구간</th><th>요율</th><th>내륙(→FBA)</th></tr>
+          <tr><td><b>UAE (ICN→DXB)</b></td><td>45kg+ $7.50/kg · 100kg+ $6.50/kg · 1T+ $6.00/kg</td><td>DXB→FBA <b>$350/건~</b></td></tr>
+          <tr><td>KSA (ICN→RUH, 참고)</td><td>직항 미운영 → 경유편 100kg+ $6.80/kg</td><td>RUH→FBA AT COST</td></tr>
+        </table>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">5.2</span>구간별 비용 구성 요약</div>
+        <table>
+          <tr><th>구간</th><th>항목</th><th>비용</th></tr>
+          <tr><td>한국 출고</td><td>수출신고</td><td>인보이스×0.1% (Min ₩11k / Max ₩66k)</td></tr>
+          <tr><td rowspan="4">현지 통관</td><td>IOR 대행</td><td>3% (Min $200)</td></tr>
+          <tr><td>관세</td><td>5%</td></tr>
+          <tr><td>VAT</td><td>5%</td></tr>
+          <tr><td>통관 진행비</td><td>$100/건</td></tr>
+          <tr><td>현지→FC</td><td>내륙 운송</td><td>DXB→FBA $350/건~</td></tr>
+        </table>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">5.3</span>카톤(마스터 박스) 스펙</div>
+        <table>
+          <tr><th>제품</th><th>한카톤 수량</th><th>순중량(NW)</th><th>총중량(GW)</th><th>카톤 사이즈</th></tr>
+          <tr><td><b>Serum</b> (150 Painless Vegan 50ml / BU-GUG9-BPSR)</td><td>96개</td><td>12.384 kg</td><td>13.22 kg</td><td rowspan="2">47×35×26.5 cm</td></tr>
+          <tr><td><b>Cream</b> (Exo:Booster 50ml / BU-GUG9-BPOQ)</td><td>80개</td><td>13.92 kg</td><td>14.83 kg</td></tr>
+        </table>
+        <p style="margin-top:10px;">개당 총중량 — Serum 0.1377 kg/개, Cream 0.1854 kg/개. 두 제품 카톤 부피는 동일하게 0.0436 m³.</p>
+      </div>
+    </section>
+
+    <!-- 6 이번 발송 물량 계산 -->
+    <section id="s6">
+      <div class="sec-h"><div class="sec-n">6</div><div><h2>이번 발송 물량 계산</h2><div class="sec-sub">Serum 200 + Cream 450 기준 추정치 (카톤 스펙 역산, 실측 아님)</div></div></div>
+      <div class="kpi">
+        <div class="kcard"><div class="kl">Serum 출고량</div><div class="kv">200개</div></div>
+        <div class="kcard"><div class="kl">Cream 출고량</div><div class="kv">450개</div></div>
+        <div class="kcard"><div class="kl">추정 카톤 수</div><div class="kv">9박스</div></div>
+        <div class="kcard warn"><div class="kl">추정 총중량</div><div class="kv">≈111 kg</div></div>
+      </div>
+      <div class="callout warn" style="margin-top:20px;"><b>150kg 권장 최소 기준 미달.</b> 카톤 스펙(§5.3) 기준 역산 시 Serum ≈3카톤(≈27.5kg) + Cream ≈6카톤(≈83.4kg) = 총 9카톤 · 약 111kg으로, STEP 3의 권장 최소 150kg에 못 미침(약 39kg 부족). 이 물량 그대로 출고하면 건당 고정비($350/건~ 내륙 구간 포함) 비중이 커져 단가가 나빠질 가능성 있음 — <b>슈크란코리아에 이 물량으로도 진행 가능한지, 아니면 물량을 늘리거나 다음 배치와 합칠지 확인 필요</b>(§8 다음 액션).</div>
+      <p style="margin-top:16px;font-size:13px;color:var(--sub);">계산 근거: Serum 개당 GW 0.1377kg × 200개 = 27.5kg · Cream 개당 GW 0.1854kg × 450개 = 83.4kg · 카톤 수는 각 카톤 정원(96개/80개) 기준 올림 처리. 실제 포장 시 파렛트·완충재 중량은 미포함이라 실측치는 이보다 높을 수 있음.</p>
+    </section>
+
+    <!-- 7 필요 정보 체크리스트 -->
+    <section id="s7">
+      <div class="sec-h"><div class="sec-n">7</div><div><h2>필요 정보 체크리스트</h2><div class="sec-sub">Send to Amazon 재진행 전 확정 필요</div></div></div>
+      <div class="clause">
+        <div class="ct"><span class="no">7.1</span>Ship-from 주소 (블로커)</div>
+        <p>출고지 자체는 확정됨 — <b>VDVIA 자체 한국 물류창고</b> (코스맥스 공장 직송·VDVIA 사무실 출고 시나리오는 제외됨). 다만 회사 문서 전체(07-logistics-inventory/notes.md, markets.md, CGETC 자료 등)를 확인해도 이 물류창고의 <b>정식 명칭·주소·담당자명·전화번호가 기록돼 있지 않음</b> — "프림"이라는 포워더명만 언급되고 주소는 없음. Seller Central Ship-from 입력을 위해 다음을 직접 확보 필요:</p>
+        <ul class="clean">
+          <li><b>물류창고 정식 주소</b> — 도로명주소·우편번호</li>
+          <li><b>담당자명·전화번호</b> — Seller Central Ship-from 필드 필수값</li>
+          <li><b>주소 확정 시 이 페이지·notes.md에 기록</b> — 다음 배치부터 재사용</li>
+        </ul>
+        <p style="margin-top:10px;font-size:13.5px;color:var(--sub);">참고로 과거 Amazon US FBA 발송 시 사용한 ship-from 주소 기록도 회사 문서에서 찾지 못함 — CGETC(단가-정리.md)는 미국 현지 3PL(캘리포니아, 태평양 항로 수입 후 창고)이라 이번 한국→UAE 구간과는 무관.</p>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">7.2</span>포장방식 확정</div>
+        <p>현재 기본값(Individual units · Prep not required · Unit labeling by seller) 유지할지, Case-packed(박스당 개수 입력 필요)로 전환할지 결정.</p>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">7.3</span>박스 규격</div>
+        <p>카톤 스펙(§5.3, 47×35×26.5cm) 그대로 사용할지, Ship-from 주소·포장방식에 따라 재포장이 필요한지 확인.</p>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">7.4</span>물량 재확인</div>
+        <p>§6에서 확인된 150kg 미달 이슈 — 이번 배치 물량을 그대로 진행할지, 조정할지 결정.</p>
+      </div>
+    </section>
+
+    <!-- 8 연락처 -->
+    <section id="s8">
+      <div class="sec-h"><div class="sec-n">8</div><div><h2>연락처 · 다음 액션</h2><div class="sec-sub">Contacts &amp; Next Steps</div></div></div>
+      <div class="clause">
+        <div class="ct"><span class="no">8.1</span>슈크란코리아</div>
+        <table>
+          <tr><th>담당</th><th>이메일</th><th>전화</th><th>비고</th></tr>
+          <tr><td>윤지환 매니저</td><td>info@shukrankorea.com</td><td>010-3465-0216</td><td>부킹은 5~7일 전 문의</td></tr>
+        </table>
+      </div>
+      <div class="clause">
+        <div class="ct"><span class="no">8.2</span>다음 액션 (우선순위 순)</div>
+        <ol style="margin-left:20px;font-size:15px;line-height:1.9;color:#33322c;">
+          <li>VDVIA 자체 물류창고 정확한 주소·담당자·전화번호 확보 → Seller Central Ship-from 입력</li>
+          <li>포장방식·박스규격 확정</li>
+          <li>150kg 미달 건 슈크란코리아에 문의 — 그대로 진행 가능 여부 확인</li>
+          <li>Send to Amazon 이어서 진행 → FNSKU 라벨 생성</li>
+          <li>슈크란코리아 부킹 문의 (출고 5~7일 전)</li>
+        </ol>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="closing" style="margin:0 76px 0;">
+    <div class="ct">SSOT</div>
+    <h3 class="fr">정본은 비공개 모노레포에 있습니다</h3>
+    <p>정본: <b>50_operations/07-logistics-inventory/uae-fba-procedure.html</b> · Know-how: <b>notes.md</b> · 이 페이지는 링크 공유 전용 게시본(noindex)입니다. VDVIA · a ZISHEL company · LEMONDERMA</p>
+  </div>
+
+  <div class="footer">
+    <p><b>출처</b> 07-logistics-inventory/notes.md(슈크란코리아 절차·요율), knowledge/carton_spec.md(카톤 스펙), 99_log/john/sessions/2026-07-07-UAE-FBA-입고-절차-착수.md(진행 현황) · <b>최종 갱신</b> 2026-07-07</p>
+    <p>요율·비용은 2026-06-25 기준이며 수시 변동. 실행 전 슈크란코리아에 재확인할 것.</p>
+  </div>
+
+</div>
+</body>
+</html>
