@@ -145,7 +145,7 @@
         <div class="lay human" style="background:#eef4fb"><div class="badge" style="background:#cfe3f7">AI의 창</div><div class="txt"><b>클로드 코드</b> — 지시받은 일을 문서를 읽고 실행. 밤엔 자동화 봇으로 일함</div></div>
       </div>
       <div class="toc"><b>목차</b><br>
-        <a href="#s1">1 우리가 푸는 문제</a> · <a href="#s2">2 네 가지 원리</a> · <a href="#s3">3 한눈에 보는 구조</a> · <a href="#s4">4 폴더=조직도</a> · <a href="#s5">5 회사를 보는 3가지 뷰</a> · <a href="#s6">6 하루 리듬</a> · <a href="#s7">7 지킬 습관 3가지</a> · <a href="#s8">8 클로드에게 일 시키기</a> · <a href="#s9">9 옵시디언</a> · <a href="#s10">10 /graph</a> · <a href="#s11">11 휴대폰으로 일하기</a> · <a href="#s12">12 모델·토큰 규칙</a> · <a href="#s13">13 정본 지도 + 금기</a> · <a href="#s14">14 첫 주 체크리스트</a>
+        <a href="#s1">1 우리가 푸는 문제</a> · <a href="#s2">2 네 가지 원리</a> · <a href="#s3">3 한눈에 보는 구조</a> · <a href="#s4">4 폴더=조직도</a> · <a href="#s5">5 회사를 보는 3가지 뷰</a> · <a href="#s6">6 하루 리듬</a> · <a href="#s7">7 지킬 습관 3가지</a> · <a href="#s8">8 클로드에게 일 시키기</a> · <a href="#s9">9 옵시디언</a> · <a href="#s10">10 /graph</a> · <a href="#s11">11 휴대폰으로 일하기</a> · <a href="#s12">12 모델·토큰 규칙</a> · <a href="#s13">13 정본 지도 + 금기</a> · <a href="#s14">14 첫 주 체크리스트</a><br><b style="color:var(--mut)">심화</b> · <a href="#s15">15 구조 유지 규칙</a> · <a href="#s16">16 암묵지 6분류</a> · <a href="#s17">17 자동화 인벤토리</a>
       </div>
     </section>
 
@@ -398,6 +398,64 @@
         <li>§13 금기 다시 정독 · 궁금한 것 전부 클로드에게 물어보기 — <b>그 질문도 회사 지식으로 쌓인다</b></li>
       </ul></div>
       <div class="callout good"><b>막히면?</b> 클로드에게 물어보면 된다 — 이 문서와 모든 안내판을 클로드도 읽고 있다. 그리고 당신이 막힌 지점이 기록되면, 다음 사람은 안 막힌다. 그게 이 시스템이다.</div>
+    </section>
+
+    <div class="part"><span class="pn">PART 6</span><span class="pt">심화 레퍼런스</span><span class="pd">지금 안 읽어도 됨 · 필요할 때 펼쳐보는 부분</span></div>
+
+    <!-- 15 -->
+    <section id="s15">
+      <div class="sec-h"><div class="sec-n">15</div><div><h2>구조 유지 규칙 — 지도 = 실물</h2><div class="sec-sub">"안내판이 없는 폴더를 가리키던" 2026-07-01 사건의 재발 방지</div></div></div>
+      <p>원칙 하나: <span class="hl">지도(문서)와 실물(폴더·자동화)은 항상 같아야 한다.</span> 아래는 그걸 지키는 규칙과, 어긋남을 자동으로 잡는 장치다.</p>
+      <table>
+        <tr><th style="width:54%">규칙</th><th>왜 (실제 사건)</th></tr>
+        <tr><td><b>① 폴더를 옮기면 그 자리에서 안내판(CLAUDE.md)도 함께 고친다.</b> "이관 완료" = 안내판 갱신 + drift 0 + 자동화 경로 재지정, 셋 다.</td><td>재편 완료 선언 후 안내판 16개가 23일간 옛 경로를 가리킴</td></tr>
+        <tr><td><b>② 자동 재생성물은 기본 gitignore.</b> 자동화 커밋은 <code>add -A</code> 금지 — 산출물 경로만 명시.</td><td>add -A가 다른 팀 수집기 3종을 오삭제해 하루 전량 실패</td></tr>
+        <tr><td><b>③ 만들기 전에 상위 규칙을 먼저 읽는다.</b> 필독·라우팅 건너뛰지 않기.</td><td>하위 폴더 세밀 규칙을 상위에서 덮어쓸 뻔</td></tr>
+        <tr><td><b>④ 문서 충돌은 한쪽을 지우지 말고 둘 다 적어 결정자에게.</b></td><td>지쉘 소유권 결정문 vs README 충돌</td></tr>
+        <tr><td><b>⑤ 새 자동화는 §17 인벤토리 등재 + 생존신호 없이 "가동" 선언 금지.</b></td><td>틱톡 어필리에이트가 3주간 아무도 모르게 휴면</td></tr>
+      </table>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card"><div class="ct">🔍 drift_check — 매일 아침 자동 스캔</div><div class="cd">07:00 배치가 <code>_health/drift_check.py</code>로 8가지 표류 신호(죽은 링크·유령 경로·구 SSOT·지도vs실물·죽은 launchd·60_agency 분리 위반 등)를 훑는다. <b>문제 0이면 침묵</b>, 있으면 #ai-알림 한 줄.</div></div>
+        <div class="card"><div class="ct">📥 _inbox — 모르면 추측 안 함</div><div class="cd">저장 위치가 애매하면 흩뿌리지 말고 <code>00_compass/_inbox/</code>에 격리. 아침 배치가 대기 건수를 보고 → 사람이 재분류. 목표 상태 = 항상 비어있음.</div></div>
+        <div class="card"><div class="ct">🏷 한 이름 = 한 실체</div><div class="cd">한 이름이 2개 이상을 가리키면 즉시 <code>{이름}-relations.md</code> 정본 신설, 각 폴더는 링크만. (예: "지쉘" 3실체 → zishel-relations.md)</div></div>
+        <div class="card"><div class="ct">🔒 60_agency 데이터 분리</div><div class="cd">대행(60_agency)과 레몬더마는 데이터·계정·발행처 상호 참조 금지. 계약서·PII·클라이언트 미공개 데이터는 Drive에, 레포엔 링크·상태만.</div></div>
+      </div>
+    </section>
+
+    <!-- 16 -->
+    <section id="s16">
+      <div class="sec-h"><div class="sec-n">16</div><div><h2>암묵지 6분류 — 무엇이 어디로 가나</h2><div class="sec-sub">"암묵지 정리" 한 마디가 실제로 하는 일</div></div></div>
+      <p>3인 각자의 맥에서 러너가 매일 <b>그날의 세션 + Slack + Notion 변경분</b>을 읽고, 아래 6분류로 저장소 정본에 나눠 넣는다. 분류 기준 원본은 <code>00_compass/_tacit-extract.md</code>.</p>
+      <table>
+        <tr><th style="width:130px">분류</th><th style="width:44%">언제(신호)</th><th>정본 위치</th></tr>
+        <tr><td><b>① 결정</b></td><td>"결정함" · 갈래길 선택 · 가설 채택</td><td><code>00_compass/decisions/</code> 신규</td></tr>
+        <tr><td><b>② 폐기·금기</b></td><td>시도했는데 안 통함 · 같은 실패 2회+</td><td><code>decisions/</code> (<code>폐기-</code> 접두)</td></tr>
+        <tr><td><b>③ 판단 휴리스틱</b></td><td>"이런 경우엔 이렇게" · 동일 판단 2회+</td><td>playbook 3계층 (회사/John/Marco)</td></tr>
+        <tr><td><b>④ 시장·페르소나 시그널</b></td><td>고객 반응·채널 성과·경쟁사 — 가설을 흔드는 데이터</td><td>결론→<code>strategy-state.md</code> · 고객 원본 목소리→<code>content-intel/voc/</code></td></tr>
+        <tr><td><b>⑤ 시스템·도구 노하우</b></td><td>"이 API는 이렇게" · 툴의 비자명 quirk</td><td>notes.md 계층</td></tr>
+        <tr><td><b>⑥ 자동화 후보</b></td><td>"매번 손으로 함" · 주 3회+ = 자동 승격[HIGH]</td><td>automation-backlog.md</td></tr>
+      </table>
+      <div class="callout"><b>US 퍼포먼스 특수 라우팅:</b> 6분류와 별개로, US 광고의 <b>모든 변화</b>(자동·수동·콘솔 직접)는 <code>changelog.md</code>에 시간순 기록하고, 결과가 나오면 <b>"→ 결과(날짜): 수치"</b>를 이어붙인다. 이 원인→결과 사슬이 주간 리포트의 토대다.</div>
+      <div class="callout good"><b>핵심:</b> 분류·저장으로 끝이 아니다. 그 팀 CLAUDE.md나 필독에 <b>링크가 걸려야</b> 다음 세션이 실제로 읽는다. 그래서 야간 러너는 새 결정·폐기를 해당 폴더 CLAUDE.md에 링크로도 반영한다(추가만, 삭제 금지). 지식그래프(§10)가 이 연결을 매일 갱신·검수한다.</div>
+    </section>
+
+    <!-- 17 -->
+    <section id="s17">
+      <div class="sec-h"><div class="sec-n">17</div><div><h2>자동화 인벤토리 + 등록 규약</h2><div class="sec-sub">이 표가 가동 중 자동화의 정본 목록 — 상태 바뀌면 표도 같이</div></div></div>
+      <p><b>성숙도 사다리:</b> L0 사람 손 → L1 AI 보조(세션에서 시킴) → L2 스케줄 자동+사후 Slack 보고 → L3 자율(스스로 감지·복구). 현재 대부분 L2.</p>
+      <table>
+        <tr><th>자동화</th><th style="width:110px">머신·주기</th><th>하는 일</th><th style="width:56px">상태</th></tr>
+        <tr><td><b>야간 암묵지 러너 ×3</b></td><td>3인 · 00·01·11시</td><td>세션·Slack·Notion 델타 증류 → 정본 반영 + CLAUDE.md 링크 동기화</td><td>가동 L2</td></tr>
+        <tr><td><b>암묵지 무누락 리포트</b> <span style="color:var(--green)">(신규 7/9)</span></td><td>John · 08:20</td><td>3인 24h 추출 여부 점검 → 누락 시 경고</td><td>가동 L2</td></tr>
+        <tr><td><b>지식그래프 재빌드</b> <span style="color:var(--green)">(신규 7/13)</span></td><td>John · 02:00</td><td>문서 관계망 갱신(증분) + 고아 문서 리포트 · <code>/graph</code>의 근거</td><td>가동 L2</td></tr>
+        <tr><td><b>아침 브리핑 + 헬스보드 + drift</b></td><td>John · 07:00</td><td>메일 분석 · 자동화 생존 점검 · 구조 표류 스캔</td><td>가동 L2</td></tr>
+        <tr><td><b>회의 공지봇 · 회의록봇</b></td><td>John · 08:00·상시</td><td>미팅록 생성+공지 · 회의 전사→Notion(자가복구)</td><td>가동 L2·L3</td></tr>
+        <tr><td>US 퍼포먼스 함대</td><td>John · 하루 수회</td><td>상태 갱신·일일 리포트·대시보드 (상세는 팀 CLAUDE.md)</td><td>가동 L2</td></tr>
+        <tr><td>gov(03)·logistics(07)·finance(01)·팀리포트</td><td>Marco · 아침</td><td>정부지원 스캔·물류/재고·P&amp;L·팀 대시보드 발행</td><td>가동 L2</td></tr>
+        <tr><td>tiktok-shop-affiliate</td><td>John</td><td>어필리에이트 운영 — 6/8 의도적 중지, 재개 절차는 README</td><td>휴면</td></tr>
+      </table>
+      <div class="callout"><b>"가동 중"이라 부르려면 4가지가 돼 있어야 한다:</b> ① 성공 때마다 생존신호(heartbeat) — 없으면 죽어도 모름 ② 자동화 1개 = 스케줄러 1개(중복 등록 금지) ③ 뭘 하는지 레포에 기록(로컬 PC에만 두지 않기) ④ 멈추거나 없앴으면 README 첫 줄 + 이 표를 같이 고친다. 돌아가는 프로그램이 아닌 프롬프트 문서(봇 정의·스킬)는 <code>00_compass/prompt-assets.md</code>에 등재.</div>
+      <div class="callout warn"><b>분기 1회 — 좀비 자동화 점검.</b> 자동화는 추가만 되고 은퇴는 잘 안 된다. 분기마다 각 자동화에 3문항: ① 지난 분기 실제로 값을 냈나? ② 다른 것과 겹치나? ③ 지금 다시 만든다면 만들까? — 셋 다 애매하면 폐기·휴면 후보.</div>
     </section>
 
   </div>
