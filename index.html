@@ -70,6 +70,47 @@
   .lay .badge{font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:var(--ink);background:var(--lemon-panel);border-radius:8px;padding:6px 12px;flex:none;width:140px;text-align:center;}
   .lay .txt{font-size:13.5px;color:#33322c;line-height:1.6;}
   .lay .txt b{color:var(--ink);}
+  /* 범례 + 두 도식 (하루 리듬 · 아키텍처) */
+  .legend{display:flex;gap:20px;margin-top:18px;font-size:12.5px;color:var(--sub);font-weight:600;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .legend i{width:13px;height:13px;border-radius:4px;display:inline-block;flex:none;}
+  .legend i.la{background:#2f3e5e;} .legend i.lh{background:#6f5a2b;}
+  .dgcap{font-size:12px;color:var(--mut);font-weight:700;letter-spacing:.03em;margin:20px 0 0;}
+  .flow{display:flex;align-items:stretch;gap:8px;margin-top:10px;}
+  .fbox{flex:1;border-radius:12px;padding:14px 14px 13px;min-width:0;}
+  .fbox.auto{background:#26314a;} .fbox.human{background:#3b3117;}
+  .fbox .ft{font-family:'Fraunces',serif;font-weight:700;font-size:15px;margin-bottom:6px;}
+  .fbox.auto .ft{color:#a7c6ef;} .fbox.human .ft{color:var(--lemon);}
+  .fbox .fd{font-size:12.5px;line-height:1.55;}
+  .fbox.auto .fd{color:#c2cfe4;} .fbox.human .fd{color:#d8c896;}
+  .farr{align-self:center;color:var(--mut);font-size:18px;flex:none;}
+  .floop{margin-top:10px;text-align:center;font-size:12.5px;color:var(--sub);background:#faf7ea;border:1px dashed #e0d9bf;border-radius:10px;padding:10px;font-weight:600;}
+  .arch{margin-top:10px;}
+  .arow2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .abox{border-radius:12px;padding:15px 16px;}
+  .abox.human{background:#3b3117;} .abox.auto{background:#26314a;} .abox.repo{background:var(--ink);}
+  .abox .at{font-family:'Fraunces',serif;font-weight:700;font-size:14.5px;margin-bottom:5px;}
+  .abox.human .at{color:var(--lemon);} .abox.auto .at{color:#a7c6ef;} .abox.repo .at{color:var(--lemon);}
+  .abox .ad{font-size:12.5px;line-height:1.55;}
+  .abox.human .ad{color:#d8c896;} .abox.auto .ad{color:#c2cfe4;} .abox.repo .ad{color:#cfc9a8;}
+  .aconn{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:7px 0 3px;}
+  .aconn>div{text-align:center;color:var(--mut);font-size:11.5px;font-weight:600;}
+  .aconn b{color:var(--mut);font-weight:700;font-size:14px;}
+  .adown{text-align:center;color:var(--mut);font-size:16px;padding:2px 0;}
+  .arow4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:4px;}
+  .leaf{background:#faf7ea;border:1.5px solid var(--line);border-radius:10px;padding:12px;font-size:12px;color:var(--sub);line-height:1.5;text-align:center;}
+  .leaf b{display:block;color:var(--ink);font-size:13px;margin-bottom:3px;}
+  @media(max-width:640px){ .flow{flex-direction:column;} .farr{transform:rotate(90deg);} .arow2{grid-template-columns:1fr;} .arow4{grid-template-columns:1fr 1fr;} }
+  /* 우측 고정 목차 (넓은 화면 전용) + 스크롤스파이 */
+  html{scroll-behavior:smooth;}
+  [id^="s"]{scroll-margin-top:20px;}
+  .toc-side{position:fixed;top:22px;left:calc(50% + 496px);width:196px;max-height:calc(100vh - 44px);overflow-y:auto;padding:14px;background:#fff;border:1.5px solid var(--line);border-radius:12px;box-shadow:0 4px 22px rgba(31,31,31,.07);font-size:12px;z-index:50;display:none;}
+  .toc-side .tsh{font-family:'Fraunces',serif;font-size:11px;letter-spacing:.16em;color:var(--mut);font-weight:700;margin-bottom:9px;}
+  .toc-side a{display:block;color:var(--sub);border:none;padding:4px 9px;border-radius:6px;line-height:1.35;margin-bottom:1px;border-left:2px solid transparent;}
+  .toc-side a:hover{background:#faf7ea;color:var(--ink);}
+  .toc-side a.active{background:var(--lemon-tint);color:var(--ink);font-weight:700;border-left-color:var(--lemon);}
+  .toc-side .grp{font-size:10px;color:var(--mut);font-weight:700;margin:10px 0 3px 9px;letter-spacing:.1em;}
+  @media(min-width:1420px){ .toc-side{display:block;} .toc-inline{display:none;} }
   .chan{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
   .ch{border:1.5px solid var(--line);border-radius:10px;padding:12px;text-align:center;}
   .ch .cn{font-size:13.5px;font-weight:800;}
@@ -154,6 +195,28 @@
 </style>
 </head>
 <body>
+<nav class="toc-side" id="tocSide" aria-label="목차">
+  <div class="tsh">목차</div>
+  <a href="#s0">⚡ 30초 요약</a>
+  <a href="#s1">1 우리가 푸는 문제</a>
+  <a href="#s2">2 네 가지 원리</a>
+  <a href="#s3">3 한눈에 보는 구조</a>
+  <a href="#s4">4 폴더=조직도</a>
+  <a href="#s5">5 회사를 보는 3가지 뷰</a>
+  <a href="#s6">6 하루 리듬</a>
+  <a href="#s7">7 지킬 습관 3가지</a>
+  <a href="#s8">8 클로드에게 일 시키기</a>
+  <a href="#s9">9 옵시디언</a>
+  <a href="#s10">10 /graph</a>
+  <a href="#s11">11 휴대폰으로 일하기</a>
+  <a href="#s12">12 모델·토큰 규칙</a>
+  <a href="#s13">13 정본 지도 + 금기</a>
+  <a href="#s14">14 온보딩</a>
+  <div class="grp">심화</div>
+  <a href="#s15">15 구조 유지 규칙</a>
+  <a href="#s16">16 암묵지 6분류</a>
+  <a href="#s17">17 자동화 인벤토리</a>
+</nav>
 <div class="doc">
 
   <div class="cover">
@@ -169,14 +232,40 @@
     <section id="s0">
       <div class="sec-h"><div class="sec-n">⚡</div><div><h2>30초 요약</h2><div class="sec-sub">이 문서 전체를 한 문단으로</div></div></div>
       <p style="font-size:16.5px"><span class="hl">회사의 뇌는 문서 폴더 하나(vdvia 저장소)다.</span> 사람은 <b>옵시디언</b>이라는 창으로, AI(클로드)는 <b>클로드 코드</b>라는 창으로 <b>같은 문서를 읽고 쓴다.</b> 밤마다 자동으로 그날의 대화에서 지식이 추출돼 문서로 쌓이고, 문서들의 관계가 그래프로 갱신된다. 그래서 내일의 AI는 오늘보다 회사를 더 잘 안다. <b>당신이 할 일은 습관 3개뿐이다</b> — ① 클로드가 작업 전 문서를 읽었는지 확인하고 ② 세션이 끝나면 "암묵지 정리"라고 말하고 ③ 문서는 옵시디언에서 보고 고친다.</p>
-      <div class="layers">
-        <div class="lay human"><div class="badge">사람의 창</div><div class="txt"><b>옵시디언</b> — 읽기·편집·그래프 탐색. 저장하면 15분 안에 모두에게 자동 반영</div></div>
-        <div class="lay mid">▲ 같은 문서를 위아래가 공유 ▼</div>
-        <div class="lay repo"><div class="badge">회사의 뇌</div><div class="txt"><b>vdvia 저장소</b> — 모든 문서·결정·자동화가 사는 단일 정본 (GitHub이 백업·역사 담당)</div></div>
-        <div class="lay mid">▲ 같은 문서를 위아래가 공유 ▼</div>
-        <div class="lay human" style="background:#eef4fb"><div class="badge" style="background:#cfe3f7">AI의 창</div><div class="txt"><b>클로드 코드</b> — 지시받은 일을 문서를 읽고 실행. 밤엔 자동화 봇으로 일함</div></div>
+      <div class="legend">
+        <span><i class="la"></i>자동으로 도는 것</span>
+        <span><i class="lh"></i>사람이 참여하는 것</span>
       </div>
-      <div class="toc"><b>목차</b><br>
+
+      <div class="dgcap">하루 리듬 — 사람과 자동화가 번갈아 돈다</div>
+      <div class="flow">
+        <div class="fbox auto"><div class="ft">아침 7~8시</div><div class="fd">봇 브리핑 · 회의 공지<br>상태판 자동 갱신</div></div>
+        <div class="farr">→</div>
+        <div class="fbox human"><div class="ft">업무 시간</div><div class="fd">필독 로드 후 AI 작업<br>옵시디언 편집 · 캔버스</div></div>
+        <div class="farr">→</div>
+        <div class="fbox human"><div class="ft">세션 마감</div><div class="fd">암묵지 정리 트리거<br>(중요 세션만)</div></div>
+        <div class="farr">→</div>
+        <div class="fbox auto"><div class="ft">자정 러너</div><div class="fd">3인 대화 증류<br>결정 · 플레이북 축적</div></div>
+      </div>
+      <div class="floop">↺ 다음 날 — 어제까지의 기록을 아는 AI로 다시 시작</div>
+
+      <div class="dgcap">전체 구조 — 사람·AI가 같은 정본을 공유</div>
+      <div class="arch">
+        <div class="arow2">
+          <div class="abox human"><div class="at">사람 — John · Marco · Sol</div><div class="ad">옵시디언: 읽기 · 편집 · 그래프 · 캔버스</div></div>
+          <div class="abox auto"><div class="at">AI — 클로드 코드 + 자동화 봇</div><div class="ad">필독 로드 보고 후 작업 · 브리핑 · 증류</div></div>
+        </div>
+        <div class="aconn"><div><b>↓</b><br>Obsidian Git 15분 자동</div><div><b>↓</b><br>git push · pull</div></div>
+        <div class="abox repo"><div class="at">vdvia 레포 (GitHub) — 회사 정본</div><div class="ad">모든 문서 · 결정 · 자동화가 사는 곳 · 버전 역사</div></div>
+        <div class="adown">↓</div>
+        <div class="arow4">
+          <div class="leaf"><b>GitHub Pages</b>보고서 · 대시보드 발행</div>
+          <div class="leaf"><b>구글 드라이브</b>무거운 미디어 보관</div>
+          <div class="leaf"><b>슬랙</b>알림 · 브리핑 수신</div>
+          <div class="leaf"><b>노션</b>캘린더 · 태스크 · 협업</div>
+        </div>
+      </div>
+      <div class="toc toc-inline"><b>목차</b><br>
         <a href="#s1">1 우리가 푸는 문제</a> · <a href="#s2">2 네 가지 원리</a> · <a href="#s3">3 한눈에 보는 구조</a> · <a href="#s4">4 폴더=조직도</a> · <a href="#s5">5 회사를 보는 3가지 뷰</a> · <a href="#s6">6 하루 리듬</a> · <a href="#s7">7 지킬 습관 3가지</a> · <a href="#s8">8 클로드에게 일 시키기</a> · <a href="#s9">9 옵시디언</a> · <a href="#s10">10 /graph</a> · <a href="#s11">11 휴대폰으로 일하기</a> · <a href="#s12">12 모델·토큰 규칙</a> · <a href="#s13">13 정본 지도 + 금기</a> · <a href="#s14">14 온보딩</a><br><b style="color:var(--mut)">심화</b> · <a href="#s15">15 구조 유지 규칙</a> · <a href="#s16">16 암묵지 6분류</a> · <a href="#s17">17 자동화 인벤토리</a>
       </div>
     </section>
@@ -563,6 +652,29 @@
   }
   window.addEventListener('hashchange', openTargetFold);
   window.addEventListener('DOMContentLoaded', openTargetFold);
+
+  // 우측 목차 스크롤스파이 — 현재 보이는 섹션을 강조
+  (function(){
+    var links = [].slice.call(document.querySelectorAll('#tocSide a'));
+    if(!links.length) return;
+    var map = {}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var targets = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+    var current = null;
+    function setActive(id){
+      if(current === id) return; current = id;
+      links.forEach(function(a){ a.classList.remove('active'); });
+      if(map[id]){ map[id].classList.add('active');
+        map[id].scrollIntoView({block:'nearest'}); }
+    }
+    var io = new IntersectionObserver(function(entries){
+      // 화면 상단에 가장 가까운, 보이는 섹션을 선택
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if(!visible.length) return;
+      visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+      setActive(visible[0].target.id);
+    }, {rootMargin:'-15% 0px -70% 0px', threshold:0});
+    targets.forEach(function(t){ io.observe(t); });
+  })();
 </script>
 </body>
 </html>
