@@ -84,7 +84,9 @@
   .fbox .fd{font-size:12.5px;line-height:1.55;}
   .fbox.auto .fd{color:#c2cfe4;} .fbox.human .fd{color:#d8c896;}
   .farr{align-self:center;color:var(--mut);font-size:18px;flex:none;}
-  .floop{margin-top:10px;text-align:center;font-size:12.5px;color:var(--sub);background:#faf7ea;border:1px dashed #e0d9bf;border-radius:10px;padding:10px;font-weight:600;}
+  .floop{position:relative;height:40px;margin-top:3px;border:2px dashed #dacf97;border-top:none;border-radius:0 0 16px 16px;}
+  .floop::before{content:"▲";position:absolute;left:-3px;top:-12px;color:#c9bb75;font-size:12px;line-height:1;}
+  .floop .loopcap{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);background:#fff;padding:0 12px;font-size:12.5px;color:var(--sub);font-weight:600;white-space:nowrap;}
   .arch{margin-top:10px;}
   .arow2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .abox{border-radius:12px;padding:15px 16px;}
@@ -100,7 +102,9 @@
   .arow4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:4px;}
   .leaf{background:#faf7ea;border:1.5px solid var(--line);border-radius:10px;padding:12px;font-size:12px;color:var(--sub);line-height:1.5;text-align:center;}
   .leaf b{display:block;color:var(--ink);font-size:13px;margin-bottom:3px;}
-  @media(max-width:640px){ .flow{flex-direction:column;} .farr{transform:rotate(90deg);} .arow2{grid-template-columns:1fr;} .arow4{grid-template-columns:1fr 1fr;} }
+  @media(max-width:640px){ .flow{flex-direction:column;} .farr{transform:rotate(90deg);} .arow2{grid-template-columns:1fr;} .arow4{grid-template-columns:1fr 1fr;}
+    .floop{height:auto;border:1px dashed #e0d9bf;border-radius:10px;padding:10px;text-align:center;}
+    .floop::before{display:none;} .floop .loopcap{position:static;transform:none;background:none;padding:0;} }
   /* 우측 고정 목차 (넓은 화면 전용) + 스크롤스파이 */
   html{scroll-behavior:smooth;}
   [id^="s"]{scroll-margin-top:20px;}
@@ -243,11 +247,11 @@
         <div class="farr">→</div>
         <div class="fbox human"><div class="ft">업무 시간</div><div class="fd">필독 로드 후 AI 작업<br>옵시디언 편집 · 캔버스</div></div>
         <div class="farr">→</div>
-        <div class="fbox human"><div class="ft">세션 마감</div><div class="fd">암묵지 정리 트리거<br>(중요 세션만)</div></div>
+        <div class="fbox auto"><div class="ft">자정 러너 · 00시</div><div class="fd">3인 대화 증류<br>결정 · 플레이북 축적</div></div>
         <div class="farr">→</div>
-        <div class="fbox auto"><div class="ft">자정 러너</div><div class="fd">3인 대화 증류<br>결정 · 플레이북 축적</div></div>
+        <div class="fbox auto"><div class="ft">그래프 러너 · 02시</div><div class="fd">문서 관계망 재빌드<br>/graph 근거 · 고아 점검</div></div>
       </div>
-      <div class="floop">↺ 다음 날 — 어제까지의 기록을 아는 AI로 다시 시작</div>
+      <div class="floop"><span class="loopcap">↺ 다음 날 — 어제까지의 기록을 아는 AI로 다시 시작</span></div>
 
       <div class="dgcap">전체 구조 — 사람·AI가 같은 정본을 공유</div>
       <div class="arch">
