@@ -910,7 +910,9 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   var yaw=-32,pitch=-24,zoom=1,auto=!reduce,dragging=false,inview=true,moved=0;
   var px=0,py=0,pendingBld=null;
   hero.addEventListener('pointerdown',function(ev){
-    if(ev.target.closest('.hero-bottom,.skip')) return;   /* CTA·범례·건너뛰기는 드래그 캡처에서 제외 */
+    /* 히어로 위의 UI(재생 버튼·CTA·범례·건너뛰기)는 드래그 캡처에서 제외한다 —
+       캡처가 걸리면 pointerup이 hero로 재지정돼 버튼 클릭이 삼켜진다(건물 클릭과 같은 유형). */
+    if(ev.target.closest('.hero-bottom,.skip,.startwrap')) return;
     /* 건물 후보는 지금 잡아둔다 — setPointerCapture가 pointerup의 target을 hero로 재지정하므로
        up 시점의 ev.target으로는 건물을 알 수 없다 (실사용 클릭이 안 먹히던 원인) */
     pendingBld=ev.target.closest('.bld[data-team]');
@@ -940,7 +942,7 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
     });
   });
   hero.addEventListener('wheel',function(ev){
-    if(ev.target.closest('.hero-bottom')) return;          /* 하단 UI 위에서는 휠 = 페이지 스크롤 */
+    if(ev.target.closest('.hero-bottom,.startwrap')) return;  /* 히어로 UI 위에서는 휠 = 페이지 스크롤 */
     ev.preventDefault();
     zoom=Math.max(0.55,Math.min(1.7,zoom*(ev.deltaY<0?1.07:0.93)));
   },{passive:false});
