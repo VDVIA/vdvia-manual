@@ -94,12 +94,13 @@ mark{background:linear-gradient(transparent 58%,var(--hl) 58%);color:inherit;pad
 .flegend .sw{width:11px;height:11px;border-radius:3px;display:inline-block}
 .hero-hint{font-size:12.5px;color:var(--ink3);text-align:center}
 .hero-hint b{color:var(--ink2)}
-.cap{position:absolute;left:50%;top:clamp(150px,20vh,200px);transform:translateX(-50%);z-index:34;
-  max-width:min(86vw,540px);text-align:center;background:rgba(255,255,255,.96);border:1px solid var(--lineY);
-  border-radius:12px;padding:13px 22px;font-size:15px;line-height:1.6;color:var(--ink);
+/* 자막은 제목·버튼과 같은 흐름에 둔다 — 절대좌표로 띄우면 화면 높이에 따라 단지를 가린다 */
+.cap{margin:clamp(12px,2vh,20px) auto 0;max-width:min(86vw,560px);text-align:center;
+  background:rgba(255,255,255,.96);border:1px solid var(--lineY);border-radius:12px;
+  padding:13px 22px;font-size:15px;line-height:1.6;color:var(--ink);
   box-shadow:0 6px 22px -10px rgba(90,80,20,.4);pointer-events:none;
-  opacity:0;transform:translate(-50%,6px);transition:opacity .45s ease,transform .45s ease}
-.cap.showing{opacity:1;transform:translate(-50%,0)}
+  opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+.cap.showing{opacity:1;transform:translateY(0)}
 .cap i{display:block;margin-top:7px;font:600 11px/1 var(--mono);font-style:normal;letter-spacing:.1em;color:var(--ink3)}
 .skip{position:absolute;right:clamp(14px,3vw,40px);top:clamp(14px,3vh,28px);z-index:35;
   font:600 12px/1 var(--sans);color:var(--ink3);background:rgba(255,255,255,.85);
@@ -293,8 +294,8 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
     <div class="startwrap" id="startwrap" style="pointer-events:auto">
       <button class="startbtn" id="startbtn">▶ 단지 둘러보기<small>15초</small></button>
     </div>
+    <div class="cap" id="cap" aria-live="polite"></div>
   </div>
-  <div class="cap" id="cap" aria-live="polite"></div>
   <div class="hero-bottom">
     <a class="cta" href="#p1">Begin the Tour ↓</a>
     <div class="flegend" id="flegend">
@@ -894,6 +895,7 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
     if(cap) cap.classList.remove('showing');
     if(skipBtn) skipBtn.hidden=true;
     if(startWrap){                                      /* 놓쳤으면 다시 볼 수 있게 */
+      startWrap.style.display='';
       startWrap.classList.remove('gone');
       var b=document.getElementById('startbtn');
       if(b) b.innerHTML='↻ 다시 보기<small>15초</small>';
@@ -921,7 +923,7 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   }
   var startWrap=document.getElementById('startwrap'), startBtn=document.getElementById('startbtn');
   function beginTour(){
-    if(startWrap) startWrap.classList.add('gone');
+    if(startWrap) startWrap.style.display='none';   /* 재생 중엔 버튼을 비워 자막이 제목 바로 아래 오도록 */
     if(reduce){ finish(); return; }
     hub.classList.remove('on');
     BLDS.forEach(function(g){g.classList.remove('on');});
