@@ -105,11 +105,11 @@ mark{background:linear-gradient(transparent 58%,var(--hl) 58%);color:inherit;pad
   border:1px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer}
 .skip:hover{color:var(--ink);border-color:var(--ink3)}
 /* 소개 재생 버튼 — 자동 재생하지 않는다(첫 진입에서 자막을 놓치던 문제). 단지는 처음부터 완성 상태. */
-.startwrap{margin:clamp(14px,2.4vh,24px) 0 0;pointer-events:auto}
+.startwrap{margin:clamp(22px,3.4vh,38px) 0 0;pointer-events:auto}
 .startwrap.gone{display:none}
-.startbtn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;
-  font:700 14px/1 var(--sans);color:#000;background:rgba(255,255,255,.9);border:1px solid #59653c;
-  border-radius:99px;padding:11px 22px;box-shadow:0 4px 14px -8px rgba(90,80,10,.45);
+.startbtn{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  font:700 15.5px/1 var(--sans);color:#000;background:rgba(255,255,255,.92);border:1px solid #59653c;
+  border-radius:99px;padding:14px 30px;box-shadow:0 5px 16px -8px rgba(90,80,10,.45);
   transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
 .startbtn:hover{transform:translateY(-2px);background:var(--accent);box-shadow:0 8px 20px -9px rgba(90,80,10,.55)}
 .startbtn small{font:500 12px/1 var(--sans);color:#4b612d}
@@ -289,14 +289,8 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   <div class="hero-top">
     <p class="hero-eyebrow">VDVIA · Lemonderma</p>
     <h1>How VDVIA Works</h1>
-    <div class="kpis">
-      <div><b>6</b><span>동</span></div>
-      <div><b>30/30</b><span>층 완공</span></div>
-      <div><b>80</b><span>주간 시험 문항</span></div>
-      <div><b>18</b><span>감시되는 자동화</span></div>
-    </div>
     <div class="startwrap" id="startwrap" style="pointer-events:auto">
-      <button class="startbtn" id="startbtn">▶ 이 단지가 어떻게 연결되는지 보기<small>15초</small></button>
+      <button class="startbtn" id="startbtn">▶ 단지 둘러보기<small>15초</small></button>
     </div>
   </div>
   <div class="cap" id="cap" aria-live="polite"></div>
@@ -862,7 +856,7 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
     if(startWrap){                                      /* 놓쳤으면 다시 볼 수 있게 */
       startWrap.classList.remove('gone');
       var b=document.getElementById('startbtn');
-      if(b) b.innerHTML='↻ 소개 다시 보기<small>15초</small>';
+      if(b) b.innerHTML='↻ 다시 보기<small>15초</small>';
     }
   }
   function say(txt,n){ if(!cap) return;
