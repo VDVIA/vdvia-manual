@@ -93,15 +93,26 @@ mark{background:linear-gradient(transparent 58%,var(--hl) 58%);color:inherit;pad
 .flegend .sw{width:11px;height:11px;border-radius:3px;display:inline-block}
 .hero-hint{font-size:12.5px;color:var(--ink3);text-align:center}
 .hero-hint b{color:var(--ink2)}
-.cap{position:absolute;left:50%;bottom:clamp(88px,14vh,130px);transform:translateX(-50%);z-index:29;
-  max-width:min(84vw,520px);text-align:center;background:rgba(255,255,255,.92);border:1px solid var(--lineY);
-  border-radius:12px;padding:12px 20px;font-size:14.5px;color:var(--ink);box-shadow:var(--sh);
-  opacity:0;transition:opacity .45s ease}
-.cap.showing{opacity:1}
-.skip{position:absolute;right:clamp(14px,3vw,40px);top:clamp(14px,3vh,28px);z-index:31;
-  font:600 12px/1 var(--sans);color:var(--ink3);background:rgba(255,255,255,.8);
+.cap{position:absolute;left:50%;top:clamp(224px,34vh,300px);transform:translateX(-50%);z-index:34;
+  max-width:min(86vw,540px);text-align:center;background:rgba(255,255,255,.96);border:1px solid var(--lineY);
+  border-radius:12px;padding:13px 22px;font-size:15px;line-height:1.6;color:var(--ink);
+  box-shadow:0 6px 22px -10px rgba(90,80,20,.4);pointer-events:none;
+  opacity:0;transform:translate(-50%,6px);transition:opacity .45s ease,transform .45s ease}
+.cap.showing{opacity:1;transform:translate(-50%,0)}
+.cap i{display:block;margin-top:7px;font:600 11px/1 var(--mono);font-style:normal;letter-spacing:.1em;color:var(--ink3)}
+.skip{position:absolute;right:clamp(14px,3vw,40px);top:clamp(14px,3vh,28px);z-index:35;
+  font:600 12px/1 var(--sans);color:var(--ink3);background:rgba(255,255,255,.85);
   border:1px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer}
 .skip:hover{color:var(--ink);border-color:var(--ink3)}
+/* 소개 재생 버튼 — 자동 재생하지 않는다(첫 진입에서 자막을 놓치던 문제). 단지는 처음부터 완성 상태. */
+.startwrap{margin:clamp(14px,2.4vh,24px) 0 0;pointer-events:auto}
+.startwrap.gone{display:none}
+.startbtn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  font:700 14px/1 var(--sans);color:#000;background:rgba(255,255,255,.9);border:1px solid #59653c;
+  border-radius:99px;padding:11px 22px;box-shadow:0 4px 14px -8px rgba(90,80,10,.45);
+  transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.startbtn:hover{transform:translateY(-2px);background:var(--accent);box-shadow:0 8px 20px -9px rgba(90,80,10,.55)}
+.startbtn small{font:500 12px/1 var(--sans);color:#4b612d}
 .scrollcue{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);z-index:28;color:var(--ink3);
   font-size:20px;animation:cue 2.2s ease-in-out infinite;pointer-events:none}
 @keyframes cue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
@@ -274,7 +285,7 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
 
 <header id="hero">
   <div class="persp"><div id="world"></div></div>
-  <button class="skip" id="skip">건너뛰기 →</button>
+  <button class="skip" id="skip" hidden>건너뛰기 →</button>
   <div class="hero-top">
     <p class="hero-eyebrow">VDVIA · Lemonderma</p>
     <h1>How VDVIA Works</h1>
@@ -283,6 +294,9 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
       <div><b>30/30</b><span>층 완공</span></div>
       <div><b>80</b><span>주간 시험 문항</span></div>
       <div><b>18</b><span>감시되는 자동화</span></div>
+    </div>
+    <div class="startwrap" id="startwrap" style="pointer-events:auto">
+      <button class="startbtn" id="startbtn">▶ 이 단지가 어떻게 연결되는지 보기<small>15초</small></button>
     </div>
   </div>
   <div class="cap" id="cap" aria-live="polite"></div>
@@ -835,7 +849,6 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   /* 프롤로그 — 컷마다 자막 */
   var cap=document.getElementById('cap'), skipBtn=document.getElementById('skip');
   var timers=[], done=false;
-  function say(txt){ if(!cap) return; cap.innerHTML=txt; cap.classList.add('showing'); }
   function raiseAll(){
     hub.classList.add('on');
     BLDS.forEach(function(g){g.classList.add('on');});
@@ -845,25 +858,44 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
     if(done) return; done=true;
     timers.forEach(clearTimeout); raiseAll();
     if(cap) cap.classList.remove('showing');
-    if(skipBtn) skipBtn.style.display='none';
+    if(skipBtn) skipBtn.hidden=true;
+    if(startWrap){                                      /* 놓쳤으면 다시 볼 수 있게 */
+      startWrap.classList.remove('gone');
+      var b=document.getElementById('startbtn');
+      if(b) b.innerHTML='↻ 소개 다시 보기<small>15초</small>';
+    }
   }
+  function say(txt,n){ if(!cap) return;
+    cap.innerHTML=txt+(n?'<i>'+n+' / 4</i>':''); cap.classList.add('showing'); }
   function prologue(){
     if(reduce){ finish(); return; }
+    if(skipBtn) skipBtn.hidden=false;
     hub.classList.add('on');
-    say('회사의 지식을 여섯 채의 건물로 지었습니다.');
+    say('회사가 아는 것을 <b>여섯 채의 건물</b>로 지었습니다 — 여섯 팀, 같은 설계도.',1);
     timers.push(setTimeout(function(){
       PIPES.forEach(function(p){p.classList.add('on');});
-      say('가운데 관리사무소의 공용 배관이 — 야간 수확·채점기·커밋 검문소 — 모든 동에 연결됩니다.');
-    },2600));
+      say('가운데 <b>관리사무소</b>에서 공용 배관이 뻗습니다 — 야간 수확·주간 시험·커밋 검문소는 모든 동이 함께 씁니다.',2);
+    },3400));
     timers.push(setTimeout(function(){
-      BLDS.forEach(function(g,i){ setTimeout(function(){g.classList.add('on');}, i*260); });
-      say('여섯 동, 모든 층 완공. 창문에 불이 켜진 층이 실제로 가동 중인 층입니다.');
-    },5600));
+      BLDS.forEach(function(g,i){ setTimeout(function(){g.classList.add('on');}, i*300); });
+      say('여섯 동 <b>모든 층 완공</b>. 창문에 불이 켜진 층이 실제로 가동 중인 층입니다.',3);
+    },7200));
     timers.push(setTimeout(function(){
-      say('건물을 클릭하면 그 팀의 층별 실물이 나옵니다 — 이제 자유롭게 둘러보세요.');
-    },9200));
-    timers.push(setTimeout(finish,12000));
+      say('건물을 클릭하면 그 팀의 층별 실물이 나옵니다 — 이제 자유롭게 둘러보세요.',4);
+    },11400));
+    timers.push(setTimeout(finish,15400));
   }
+  var startWrap=document.getElementById('startwrap'), startBtn=document.getElementById('startbtn');
+  function beginTour(){
+    if(startWrap) startWrap.classList.add('gone');
+    if(reduce){ finish(); return; }
+    hub.classList.remove('on');
+    BLDS.forEach(function(g){g.classList.remove('on');});
+    PIPES.forEach(function(p){p.classList.remove('on');});
+    done=false; timers.forEach(clearTimeout); timers=[];
+    setTimeout(prologue,140);
+  }
+  if(startBtn) startBtn.addEventListener('click',beginTour);
   if(skipBtn) skipBtn.addEventListener('click',finish);
   /* 층 스윕 */
   var legend=document.getElementById('flegend');
@@ -941,9 +973,9 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
       es.forEach(function(en){ inview=en.isIntersecting; });
     }).observe(hero);
   }
-  var started=false;
-  function start(){ if(started)return; started=true; prologue(); }
-  setTimeout(start,300);
+  /* 로드 직후 단지는 이미 완성 상태로 보인다(빈 화면 방지). 소개 시퀀스는 버튼을 눌러야 재생된다
+     — 자동 재생하면 첫 진입에서 자막을 놓치기 때문. */
+  raiseAll();
   /* 팀 상세 오버레이 */
   var lastScroll=0;
   function openTeam(slug){
