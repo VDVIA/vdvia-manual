@@ -67,6 +67,7 @@ mark{background:linear-gradient(transparent 58%,var(--hl) 58%);color:inherit;pad
 .sweep-dim .fl{filter:saturate(.15) brightness(1.12)}
 .sweep-dim .fl.sweep{filter:none;box-shadow:inset 0 0 0 2px #fff,0 0 14px rgba(230,238,122,.95)}
 .win{position:absolute;width:11px;height:8px;border-radius:1.5px}
+.bld.plot .cface{box-shadow:inset 0 0 0 1.5px rgba(120,130,60,.4)}
 .blab{position:absolute;left:50%;top:50%;white-space:nowrap;
   font:600 13px/1.15 var(--sans);color:var(--ink);
   background:rgba(255,255,255,.88);border:1px solid var(--lineY);
@@ -439,7 +440,8 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
 <section class="part" id="p2">
   <p class="pno">Part 2 · The Campus</p><h2>구조 — 지식은 어떻게 조직되는가</h2>
   <p>첫 화면의 단지로 돌아간다. 여섯 채의 건물은 여섯 팀이고,
-  모든 건물이 같은 설계도 — 다섯 개 층 — 를 따른다. 이 설계도가 앤트로픽 95%의 비결이었다.</p>
+  모든 건물이 같은 설계도 — 다섯 개 층 — 를 따른다. 이 설계도가 앤트로픽 95%의 비결이었다.
+  단지 한쪽에 <b>비어 있는 터</b>가 하나 보였을 것이다. 새로 시작한 <b>대행 사업부</b>의 부지다.</p>
 </section>
 
 <section class="ch" id="ch4">
@@ -500,6 +502,14 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
 </svg><figcaption>상수를 문서마다 복사하지 않는다 — 값은 한 곳, 나머지는 배선</figcaption></figure>
   <p>나머지 다섯 동도 이 다섯 층 그대로다. 첫 화면에서 아무 건물이나 클릭하면 그 팀의 층별 실물이
   같은 형식으로 나온다 — <b>모든 건물이 같은 설계도</b>라는 말은 은유가 아니라 사양이다.</p>
+  <div class="card" style="border-style:dashed">
+    <h4 style="margin:0 0 6px">착공 예정 — 대행 사업부</h4>
+    <p style="margin:0;font-size:14.5px;color:var(--ink2)">레몬더마를 키운 방법을 <b>외부 클라이언트에게 파는</b> 신규 사업이다(첫 클라이언트 지쉘그룹, 인스타 3계정·아마존 입점 대행 가동 중).
+    폴더(<code>60_agency</code>)와 문서는 이미 있지만 <b>다섯 층은 아직 짓지 않았다</b> — 그래서 단지에 터만 그려져 있다.
+    이 동에는 다른 동에 없는 제약이 하나 더 붙는다: <mark>클라이언트 데이터와 레몬더마 데이터를 절대 섞지 않는다.</mark>
+    같은 폴더에서 두 사업을 동시에 열지 않고, 발행처도 완전히 분리한다.</p>
+    <div class="srcs" style="margin-top:14px"><em>정본</em><code>60_agency/CLAUDE.md</code><code>00_compass/strategy/zishel-relations.md</code></div>
+  </div>
   <div class="srcs"><em>정본</em><code>30_growth/marketing/_4층구조-도해-2026-07-28.html</code><code>00_compass/guides/4층구조-단지조감도.html</code></div>
 </section>
 
@@ -512,7 +522,7 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   <b>오후</b>에 검수하고 올리고 보고하면, <b>밤</b>에 오늘의 결정이 다시 수확된다.
   한 줄로: <b>어제 배운 것이 오늘 아침 이미 문서가 되어 있다.</b></p>
   <div class="card"><h4 style="margin:0 0 12px">24시간 — 위에서 아래로 흐르는 하루</h4>
-    <div class="vtl"><div class="vt moon"><div class="vt-t">00:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>John 머신 암묵지 수확</b><p>어제 John의 모든 세션·Slack·노션 델타에서 결정·노하우를 자동 추출해 문서로 저장한다.</p></div></div><div class="vt moon"><div class="vt-t">01:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>Sol 머신 암묵지 수확</b><p>디자이너의 어제 세션도 같은 방식으로 수확된다 — 내가 정리하지 않아도 밤이 정리한다.</p></div></div><div class="vt moon"><div class="vt-t">02:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>지식그래프 재빌드</b><p>저장소 전체 문서의 관계를 그래프로 다시 그린다. 아침의 /graph 질문은 이 그래프를 탄다.</p></div></div><div class="vt moon"><div class="vt-t">04:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>Sol 자동화 생존 확인</b><p>디자이너 머신의 자동화 4종이 살아있는지 점검해 결과를 Sol의 DM으로 보낸다. 죽으면 그날 아침에 안다.</p></div></div><div class="vt mon"><div class="vt-t">06:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>문서 건강검진 <i class="montag">월요일</i></b><p>AI가 전 팀 문서를 상대로 시험을 친다. 점수가 떨어진 팀이 곧 수선 대상이다.</p></div></div><div class="vt "><div class="vt-t">07:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>아침 브리핑</b><p>밤새 수집된 성과가 브리핑으로 도착한다. 액션은 &quot;그럴듯한 것&quot;이 아니라 적대검증을 통과한 것만 올라온다.</p></div></div><div class="vt mon"><div class="vt-t">07:30</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>정답 재검수 <i class="montag">월요일</i></b><p>최근 결정이 시험 정답을 뒤집었는지 기계가 대조해, 사람이 확인할 문항만 골라 올린다.</p></div></div><div class="vt "><div class="vt-t">09:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>브리프 수령 → 런북 오픈</b><p>디자이너는 소재 브리프를 받고 런북(design-creative-set)을 연다 — 순서를 기억할 필요가 없다.</p></div></div><div class="vt "><div class="vt-t">11:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>Marco 머신 암묵지 수확</b><p>경영 쪽 세션도 같은 배관으로 수확된다. 세 사람의 지식이 같은 저장소에 쌓인다.</p></div></div><div class="vt "><div class="vt-t">14:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>제작 — 값은 SSOT에서</b><p>컬러·서체는 외우지 않는다. brand.md의 확정값을 읽는다. 폐기값을 쓰면 QC 1번 기준에서 걸린다.</p></div></div><div class="vt "><div class="vt-t">17:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>QC → 전달 → 보고</b><p>3가지 리젝 기준으로 전수 검수 → Drive 업로드 → Slack DM으로 완료 보고. 수정은 1회 룰.</p></div></div><div class="vt moon"><div class="vt-t">23:50</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>회의록 미러 동기화</b><p>오늘 회의가 노션에서 저장소로 복제된다 — 내일의 AI 세션이 회의 내용을 안다.</p></div></div></div>
+    <div class="vtl"><div class="vt moon"><div class="vt-t">00:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>어제 대화에서 배운 것 자동 저장</b><p>어제 John이 클로드와 나눈 모든 대화를 프로그램이 다시 읽고, 그중 &quot;결정한 것·새로 알게 된 것&quot;만 골라 문서로 만들어 저장한다. John은 아무것도 안 했다 — 자고 있었다.</p></div></div><div class="vt moon"><div class="vt-t">01:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>어제 대화에서 배운 것 자동 저장</b><p>디자이너 Sol의 어제 대화도 똑같이 처리된다. &quot;이 폰트는 폐기됐다&quot; 같은 어제의 결론이 오늘 아침엔 이미 문서다.</p></div></div><div class="vt moon"><div class="vt-t">02:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>문서끼리의 관계도 다시 그리기</b><p>저장소의 모든 문서가 서로 어떻게 연결되는지를 지도로 다시 만든다. 낮에 &quot;이 결정이 어디에 영향을 주지?&quot;라고 물으면 이 지도를 타고 답이 나온다.</p></div></div><div class="vt moon"><div class="vt-t">04:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>자동 프로그램들 살아있는지 점검</b><p>Sol 컴퓨터에서 도는 자동화 4개가 어젯밤 제대로 돌았는지 확인해서 결과를 Sol에게 메시지로 보낸다. 하나라도 죽었으면 아침에 바로 안다.</p></div></div><div class="vt mon"><div class="vt-t">06:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>월요일 — AI가 회사 문서로 시험을 본다 <i class="montag">월요일</i></b><p>AI에게 문제 80개를 낸다. AI는 힌트 없이 회사 문서만 뒤져서 답해야 한다. 많이 틀리면 AI가 멍청한 게 아니라 그 팀 문서가 낡았다는 뜻이다.</p></div></div><div class="vt "><div class="vt-t">07:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>아침 브리핑 도착</b><p>어제 광고가 어땠는지, 오늘 뭘 해야 하는지가 Slack으로 온다. 여기 올라온 제안은 &quot;그럴듯해 보이는 것&quot;이 아니라 &lt;b&gt;AI가 스스로 한 번 반박해보고 살아남은 것&lt;/b&gt;만이다.</p></div></div><div class="vt mon"><div class="vt-t">07:30</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>월요일 — 시험 정답이 아직 맞는지 확인 요청 <i class="montag">월요일</i></b><p>회사 결정이 바뀌면 시험 정답도 낡는다. 최근 결정과 부딪히는 문제를 골라 사람에게 &quot;이 답 지금도 맞나요?&quot;라고 묻는 목록을 만든다.</p></div></div><div class="vt "><div class="vt-t">09:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>오늘 할 일 시작 — 순서는 이미 적혀 있다</b><p>디자이너가 소재 제작 요청을 받는다. 무엇부터 할지 기억할 필요가 없다 — 순서가 적힌 문서(런북)를 열고 그대로 따라간다.</p></div></div><div class="vt "><div class="vt-t">11:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>어제 대화에서 배운 것 자동 저장</b><p>대표 Marco의 어제 대화도 같은 방식으로 저장된다. 세 사람이 각자 배운 것이 같은 창고에 쌓인다.</p></div></div><div class="vt "><div class="vt-t">14:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>만들 때 색·글꼴은 외우지 않는다</b><p>브랜드 색과 글꼴은 머리로 기억하지 않고 &lt;b&gt;정해진 문서 한 곳&lt;/b&gt;에서 읽어 온다. 예전에 쓰다 버린 색을 잘못 쓰면 다음 단계 검수에서 걸린다.</p></div></div><div class="vt "><div class="vt-t">17:00</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>검수 → 전달 → 보고</b><p>만든 것을 정해진 3가지 기준으로 전부 확인하고, 드라이브에 올리고, 담당자에게 메시지로 알린다. 수정은 원칙적으로 한 번만 받는다.</p></div></div><div class="vt moon"><div class="vt-t">23:50</div><div class="vt-rail"><i></i></div><div class="vt-c"><b>오늘 회의 내용 창고로 복사</b><p>오늘 한 회의의 기록이 저장소로 복사된다. 내일 AI에게 일을 시키면, AI는 오늘 회의에서 무슨 말이 오갔는지 이미 알고 있다.</p></div></div></div>
   </div>
   <h4>감시되는 자동화 전체 — 18개</h4>
   <p>아래 표는 장식이 아니라 <b>헬스보드 등록 목록에서 자동 생성</b>된다. 이 회사의 규칙:
@@ -576,12 +586,22 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
 
 <section class="ch" id="ch7">
   <p class="eyebrow">Chapter 7</p><h3>Three Habits</h3>
-  <p class="sub">지킬 습관은 셋뿐이다</p>
+  <p class="sub">첫날부터 지킬 습관 — 딱 셋만</p>
+  <p>외울 것은 많지 않다. 나머지는 검문소와 게이트가 자동으로 막아주므로,
+  <b>사람이 반드시 몸에 붙여야 하는 것은 아래 세 가지</b>다.</p>
   <div class="grid3">
-    <div class="pcard"><b>① 읽었는지 확인한다</b><p>클로드가 작업을 시작하기 전 "📚 로드: …" 한 줄로 필독 문서를 실제 읽었다고 보고하는지 본다. 없으면 시키지 말고 먼저 읽게 한다.</p><span class="why"><b>왜</b> · 필독 몇 개를 건너뛴 세션이 재작업으로 수십만 토큰을 태운다. 읽고 시작이 항상 싸다.</span></div>
-    <div class="pcard"><b>② 대부분은 그냥 끝낸다</b><p>세션 마감 의식이 필요 없다 — 2장의 야간 러너가 24시간 내 모든 세션을 수확한다. 지금 정확히 저장해야 할 중요 결정이 나온 세션만 "암묵지 정리"라고 말한다.</p><span class="why"><b>왜</b> · 사람이 일지를 쓰던 시절, 안 쓰면 지식이 그대로 증발했다. 지금은 기본값이 "저장됨"이다.</span></div>
-    <div class="pcard"><b>③ 커밋 전 삭제를 본다</b><p>클로드가 커밋 전에 보고하는 삭제(D) 항목을 반드시 읽는다. 내 폴더 밖 파일이 지워지려 하면 멈춘다.</p><span class="why"><b>왜</b> · 한 커밋이 다른 팀 자동화 3종을 지운 실사고가 있었다. 훅이 차단하지만 최전선은 사람이다.</span></div>
+    <div class="pcard"><b>① 일 시작 전 <code>/graph</code></b>
+      <p>새 업무를 시작할 때 클로드에게 <code>/graph 무엇무엇</code>을 먼저 물어본다. 관련 문서와 지난 결정이 한 번에 나온다 — 이미 정해진 걸 모르고 다시 정하는 일이 없어진다.</p>
+      <span class="why"><b>왜</b> · 이 회사의 결정은 500건이 넘는다. 검색으로는 "그때 왜 그렇게 정했는지"가 안 나오지만 그래프는 관계를 타고 찾아준다.</span></div>
+    <div class="pcard"><b>② 정하기 전에 물어본다</b>
+      <p>숫자·규칙·표현을 <b>새로 정하지 않는다.</b> 정본이 이미 있는지 먼저 확인하고, 없으면 사람(John·Marco·Sol)에게 확정을 받는다. AI에게 정의를 맡기지 않는다.</p>
+      <span class="why"><b>왜</b> · 같은 숫자가 두 개가 되는 순간 회사의 모든 판단이 흔들린다. "본전"이 1.75와 1.82로 갈라졌던 시기가 실제로 있었다.</span></div>
+    <div class="pcard"><b>③ 끝내면 그냥 끝낸다</b>
+      <p>일지·회고를 따로 쓰지 않는다. 밤에 자동으로 저장된다(2장). 딱 하나 예외 — <b>중요한 결정을 내린 세션</b>에서는 "암묵지 정리"라고 말해서 지금 저장시킨다.</p>
+      <span class="why"><b>왜</b> · 기본값이 "저장됨"이라 부지런할 필요가 없다. 다만 큰 결정은 몇 시간 뒤가 아니라 지금 남는 게 안전하다.</span></div>
   </div>
+  <p>이 셋이 익숙해지면 나머지는 자연히 따라온다. 실수해도 괜찮다 —
+  삭제·비밀 유출·정본 훼손처럼 <b>되돌리기 어려운 것은 전부 자동 검문소가 막는다</b>(12장).</p>
 </section>
 
 <section class="ch" id="ch8">
@@ -626,12 +646,14 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   <p class="sub">모델과 토큰 — 자원을 아껴 쓰는 법</p>
   <p>AI 사용량은 전 구성원이 나눠 쓰는 자원이다. 규칙은 사다리 하나로 요약된다 —
   <b>일의 난이도에 모델을 맞춘다:</b></p>
-  <div class="grid3">
-    <div class="pcard"><b>Haiku — 끝단</b><p>단순 분류·요약·태깅·반복 후처리. 자동화의 마지막 칸.</p></div>
-    <div class="pcard" style="border-color:var(--lineY);background:#fffef2"><b>Sonnet — 기본값</b><p>일반 작업·운영·코드·문서. <mark>95%의 일은 여기서 끝난다.</mark></p></div>
-    <div class="pcard"><b>Opus — 진짜 필요할 때</b><p>전략 사고·복잡 디버깅·창작·아키텍처. 실행형 대량 작업엔 쓰지 않는다.</p></div>
+  <div class="grid2">
+    <div class="pcard"><b>Haiku — 끝단</b><p>단순 분류·요약·태깅·반복 후처리. 자동화의 마지막 칸에서 조용히 돈다.</p></div>
+    <div class="pcard" style="border-color:var(--lineY);background:#fffef2"><b>Sonnet — 기본값</b><p>일반 작업·운영·코드 작성·분류·문서. <mark>95%의 일은 여기서 끝난다.</mark></p></div>
+    <div class="pcard"><b>Opus — 진짜 필요할 때</b><p>전략 사고·복잡 디버깅·창작·신청서·아키텍처 결정. 실행형 대량 작업엔 쓰지 않는다.</p></div>
+    <div class="pcard"><b>Fable — 최상위, 최후의 수단</b><p>최고난도 전략·아키텍처·복잡 창작만. <b>사용량 소모가 가장 크다</b> — 대량 실행에 쓰지 말고, 판단이 끝나면 즉시 Sonnet으로 내려온다.</p></div>
   </div>
-  <p>핵심 분리 원칙: <b>계획은 상위 모델, 실행은 Sonnet.</b> 설계·판단이 끝나고 반복 실행만 남았으면
+  <p>위로 갈수록 똑똑하지만 그만큼 <b>팀 전체가 나눠 쓰는 사용량</b>을 많이 먹는다 — 5시간 단위 한도를 전 구성원이 공유하므로, 한 사람이 큰 작업을 상위 모델로 돌리면 다른 사람의 일이 막힌다.
+  핵심 분리 원칙: <b>계획은 상위 모델, 실행은 Sonnet.</b> 설계·판단이 끝나고 반복 실행만 남았으면
   모델을 내려서 간다. 큰 작업(파일 15개+, 에이전트 병렬)은 시작 전에 클로드가 라이트/기본/헤비 선택지로
   <b>스코핑을 물어온다</b> — 승인 없이 대규모로 달리지 않는다. 토큰 예절 세 가지:
   이미지를 통째로 컨텍스트에 올리지 않기 · 진행 확인용 스크린샷 찍지 않기 · 큰 문서는 통째 읽기 대신 목차 먼저(grep-first).</p>
@@ -656,14 +678,12 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   <p class="eyebrow">Chapter 13</p><h3>Where Everything Lives</h3>
   <p class="sub">모든 것의 위치 — 폴더가 곧 조직도다</p>
   <p>첫 화면의 단지와 저장소 폴더는 1:1이다. 건물을 기억하면 폴더를 기억한 것이다:</p>
-  <div class="mapgrid"><div class="mrow"><span class="mini"><i style="background:var(--rf)"></i><i style="background:var(--rf)"></i></span><span><b>관리사무소</b><br><code>00_compass/</code> · <span style="font-size:12.5px;color:var(--ink3)">전사 공통 — 브랜드·결정 로그·채점기·헬스보드</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>전략기획동</b><br><code>10_strategy/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · 전략 캔버스·대시보드</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>제품개발동</b><br><code>20_product/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · 제품·인증·결정 대기열</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>제품성장동 + 디자인동</b><br><code>30_growth/</code> · <span style="font-size:12.5px;color:var(--ink3)">John·Sol · 마케팅(us/uae)·디자인</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>해외영업동</b><br><code>40_sales/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · B2B 파이프라인·거래선</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>경영지원동</b><br><code>50_operations/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · 재무·정부지원·물류</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--line)"></i><i style="background:var(--line)"></i><i style="background:var(--line)"></i></span><span><b>기록 보관소</b><br><code>99_log/</code> · <span style="font-size:12.5px;color:var(--ink3)">사람별 세션 원본 — 야간 수확의 원료</span></span></div></div>
-  <p>이 문서에서 언급한 정본들은 각 장 끝의 <b>정본</b> 칸에 모아뒀다.
-  실무 절차(옵시디언 설치, 세션 여는 법, 온보딩 체크리스트)는 실무 매뉴얼이 정본이다 —
-  <a href="https://vdvia.github.io/vdvia-manual/" style="color:var(--head);font-weight:700">VDVIA WORK PROCESS →</a></p>
+  <div class="mapgrid"><div class="mrow"><span class="mini"><i style="background:var(--rf)"></i><i style="background:var(--rf)"></i></span><span><b>관리사무소</b><br><code>00_compass/</code> · <span style="font-size:12.5px;color:var(--ink3)">전사 공통 — 브랜드·결정 로그·채점기·헬스보드</span></span></div><div class="mrow"><span class="mini"><i style="background:repeating-linear-gradient(45deg,#eee9c4 0 4px,#fff 4px 8px)"></i><i style="background:repeating-linear-gradient(45deg,#eee9c4 0 4px,#fff 4px 8px)"></i><i style="background:repeating-linear-gradient(45deg,#eee9c4 0 4px,#fff 4px 8px)"></i><i style="background:repeating-linear-gradient(45deg,#eee9c4 0 4px,#fff 4px 8px)"></i><i style="background:repeating-linear-gradient(45deg,#eee9c4 0 4px,#fff 4px 8px)"></i></span><span><b>대행 사업부 (착공 예정)</b><br><code>60_agency/</code> · <span style="font-size:12.5px;color:var(--ink3)">외부 클라이언트 마케팅 대행 — 지쉘그룹 가동 중. 레몬더마와 데이터 분리 필수</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>전략기획동</b><br><code>10_strategy/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · 전략 캔버스·대시보드</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>제품개발동</b><br><code>20_product/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · 제품·인증·결정 대기열</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>제품성장동 + 디자인동</b><br><code>30_growth/</code> · <span style="font-size:12.5px;color:var(--ink3)">John·Sol · 마케팅(us/uae)·디자인</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>해외영업동</b><br><code>40_sales/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · B2B 파이프라인·거래선</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--f4)"></i><i style="background:var(--f3)"></i><i style="background:var(--f2)"></i><i style="background:var(--f1)"></i><i style="background:var(--b1)"></i></span><span><b>경영지원동</b><br><code>50_operations/</code> · <span style="font-size:12.5px;color:var(--ink3)">Marco · 재무·정부지원·물류</span></span></div><div class="mrow"><span class="mini"><i style="background:var(--line)"></i><i style="background:var(--line)"></i><i style="background:var(--line)"></i></span><span><b>기록 보관소</b><br><code>99_log/</code> · <span style="font-size:12.5px;color:var(--ink3)">사람별 세션 원본 — 야간 수확의 원료</span></span></div></div>
+  <p>이 문서에서 언급한 모든 정본의 실제 위치는 각 장 끝의 <b>정본</b> 칸에 붙여 뒀다.
+  더 깊이 들어갈 일이 생기면 그 경로를 클로드에게 그대로 주면 된다.</p>
 </section>
 
 <div class="closing">
-  <p>이 단지의 다음 층은,<br>당신이 올린다.</p>
   <small>이 페이지의 모든 숫자는 저장소 실측에서 생성된다 · 2026-08-07 기준</small>
 </div>
 
@@ -843,6 +863,20 @@ footer.end{max-width:46rem;margin:0 auto;padding:0 clamp(18px,4vw,34px) 40px;
   /* 프롤로그 — 컷마다 자막 */
   var cap=document.getElementById('cap'), skipBtn=document.getElementById('skip');
   var timers=[], done=false;
+  /* 착공 예정 부지 — 기초(터)만 놓고 점선 라벨. 지은 층이 없으므로 클릭 대상이 아니다. */
+  var PLANNED=[{"slug": "agency", "name": "대행 사업부", "x": 300, "z": -95, "w": 96, "d": 80, "note": "60_agency · 착공 예정"}];
+  PLANNED.forEach(function(t){
+    var g=document.createElement('div'); g.className='c3 bld plot';
+    g.appendChild(box(t.w,10,t.d,{front:'rgba(255,255,255,.6)',side:'rgba(230,238,122,.4)',
+      back:'rgba(230,238,122,.4)',top:'rgba(255,255,255,.78)'}));
+    place(g,t.x,t.z,10);
+    label(g,10,t.name+'<small>'+t.note+'</small>','#b8b48f');
+    var l=g.querySelector('.blab');
+    l.style.borderStyle='dashed'; l.style.background='rgba(255,255,255,.8)'; l.style.pointerEvents='none';
+    world.appendChild(g); BLDS.push(g);
+    pipe(0,-40,t.x,t.z);
+  });
+
   function raiseAll(){
     hub.classList.add('on');
     BLDS.forEach(function(g){g.classList.add('on');});
